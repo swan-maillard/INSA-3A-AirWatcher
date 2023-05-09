@@ -14,7 +14,7 @@ RMFLAGS		:= 	-rf
 EXECUTABLE	:= 	app
 SRC_DIR		:= 	src/
 OBJ_DIR		:= 	obj/
-SRC			:= 	$(wildcard $(SRC_DIR)*.cpp)
+SRC			:= 	$(shell find $(SRC_DIR) -type f -name '*.cpp')
 OBJ			:= 	$(SRC:${SRC_DIR}%.cpp=$(OBJ_DIR)%.o)
 
 
@@ -60,6 +60,7 @@ $(EXECUTABLE): $(OBJ)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp | $(OBJ_DIR)
 	@$(ECHO) [MAKE] Compilation de $<
+	@$(MKDIR) -p $(@D)
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(OBJ_DIR):

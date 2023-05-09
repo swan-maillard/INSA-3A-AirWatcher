@@ -7,8 +7,8 @@
 *************************************************************************/
 
 //---------- Interface de la classe <FileAccess> (fichier FileAccess.h) ----------------
-#if ! defined (LINKS_LIST_H)
-#define LINKS_LIST_H
+#if ! defined (FILE_ACCESS_H)
+#define FILE_ACCESS_H
 
 //---------------------------------------------------------------- INCLUDE
 

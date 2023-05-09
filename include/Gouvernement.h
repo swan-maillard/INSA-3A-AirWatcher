@@ -7,8 +7,8 @@
 *************************************************************************/
 
 //---------- Interface de la classe <Gouvernement> (fichier Gouvernement.h) ----------------
-#if ! defined (LINKS_LIST_H)
-#define LINKS_LIST_H
+#if ! defined (GOUVERNEMENT_H)
+#define GOUVERNEMENT_H
 
 //---------------------------------------------------------------- INCLUDE
 

@@ -7,8 +7,8 @@
 *************************************************************************/
 
 //---------- Interface de la classe <Providers> (fichier Providers.h) ----------------
-#if ! defined (LINKS_LIST_H)
-#define LINKS_LIST_H
+#if ! defined (PROVIDERS_H)
+#define PROVIDERS_H
 
 //---------------------------------------------------------------- INCLUDE
 
