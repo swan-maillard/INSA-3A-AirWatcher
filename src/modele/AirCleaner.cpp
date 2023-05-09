@@ -11,11 +11,11 @@
 
 
 //---------------------------------------------------------------- INCLUDE
+#include <iostream>
+#include <string>
 
 //-------------------------------------------------------- Include système
 using namespace std;
-#include <iostream>
-#include <string>
 
 //------------------------------------------------------ Include personnel
 #include "../../include/AirCleaner.h"
@@ -27,7 +27,8 @@ bool AirCleaner::addWorkingHours(string &start, string &end)
 {
     Date startdate(start);
     Date enddate(end);
-    workingHours.insert(make_pair(startdate, enddate));
+    //workingHours.insert(make_pair(startdate, enddate));
+    return true;
 }
 
 AirCleaner::AirCleaner(double &uneLongitude, double &uneLatitude, int &unProviderId, int &unCleanerId) : position(Position(uneLongitude, uneLatitude))

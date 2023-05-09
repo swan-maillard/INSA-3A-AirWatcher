@@ -15,7 +15,8 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <string>
-#include <Sensor.h>
+#include <vector>
+#include "Sensor.h"
 
 class PrivateIndividuals {
 
