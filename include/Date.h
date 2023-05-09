@@ -7,8 +7,8 @@
 *************************************************************************/
 
 //---------- Interface de la classe <Date> (fichier Date.h) ----------------
-#if ! defined (LINKS_LIST_H)
-#define LINKS_LIST_H
+#if ! defined (DATE_H)
+#define DATE_H
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -23,13 +23,24 @@ class Date {
 //----------------------------------------------------- Méthodes publiques
 
     // Constructeur
-    Date();
+    Date(string uneDate = "2000-00-00 00:00:00");
 
     // Destructeur
     ~Date();
 
+    friend std::ostream& operator << (std::ostream& os, const Date & uneDate);
+
 //----------------------------------------------------------------- PRIVE
   protected:
+
+    int year;
+    int month;
+    int day;
+    int hour;
+    int min;
+    int sec;
+
+    int strToInt(string s);
 //----------------------------------------------------- Attributs protégés
 
 

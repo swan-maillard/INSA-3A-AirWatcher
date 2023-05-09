@@ -27,6 +27,17 @@ FileAccess::FileAccess() {
   #ifdef MAP
       cout << "Construction de <FileAccess>" << endl;
   #endif
+
+
+}
+
+void FileAccess::generateCleaners(string providers, string cleaner){
+  ifstream prov;
+  prov.open(providers);
+  if (!prov){
+    cout << "erreur lors de l'ouverture du fichier providers";
+    return;
+  }
 }
 
 FileAccess::~FileAccess() {
