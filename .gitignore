@@ -1,6 +1,5 @@
 .git/
 .vscode/
-bin/
-analog
-resultats.csv
-*.png
+.idea/
+obj/
+app

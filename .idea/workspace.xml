@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06f8a887-3395-4b9e-bba1-1cb8e47aa3c8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sourceCode/AirCleaner.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirCleaner.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sourceCode/AirCleaner.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirCleaner.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sourceCode/AirWatcher.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirWatcher.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sourceCode/AirWatcher.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirWatcher.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sourceCode/Sensor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sensor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sourceCode/Sensor.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sensor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AirCleaner.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/AirCleaner.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AirWatcher.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/AirWatcher.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sensor.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Sensor.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,23 +33,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Utilisateur/Desktop/AirWatcher&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Utilisateur/Desktop/AirWatcher/src",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Utilisateur\Desktop\AirWatcher\src" />
       <recent name="C:\Users\Utilisateur\Desktop\AirWatcher" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Utilisateur\Desktop\AirWatcher\include" />
     </key>
   </component>
   <component name="RunManager">
@@ -156,7 +160,7 @@
       <option name="presentableId" value="Default" />
       <updated>1683635697278</updated>
       <workItem from="1683635698826" duration="635000" />
-      <workItem from="1683636376322" duration="261000" />
+      <workItem from="1683636376322" duration="711000" />
     </task>
     <servers />
   </component>

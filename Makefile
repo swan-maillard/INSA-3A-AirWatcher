@@ -1,64 +1,67 @@
-#**********************************************************************************#
-#                          MakeFile  -  description
-#                            -------------------
-#   début                : 01/2023
-#   copyright            : (C) 2023 par Hugo WARIN et Clément Giraudon
-#   e-mail               : hugo.warin@insa-lyon.fr & clement.giraudon@insa-lyon.fr
-#**********************************************************************************#
-
-DEBUG=non
-ECHO = echo -e
-
 #Outils
 CXX			:=	g++
 LD			:= 	g++
 RM			:= 	rm
-ECHO		:= 	echo -e
+ECHO		:= 	echo
 MKDIR		:= 	mkdir
-DEBUG		:=  non
 
 #Options
-CXXFLAGS	:= 	-ansi -pedantic -Wall -std=c++11 -g
-DEVFLAGS	:= 	-DMAP
+CXXFLAGS	:= 	-ansi -pedantic -Wall -std=c++11
+DEVFLAGS	:= 	-g -DMAP
 RMFLAGS		:= 	-rf
 
 #Fichiers
-EXECUTABLE	:= 	analog
+EXECUTABLE	:= 	app
 SRC_DIR		:= 	src/
-OBJ_DIR		:= 	bin/
+OBJ_DIR		:= 	obj/
 SRC			:= 	$(wildcard $(SRC_DIR)*.cpp)
 OBJ			:= 	$(SRC:${SRC_DIR}%.cpp=$(OBJ_DIR)%.o)
 
-ifeq ($(DEBUG),oui)
-	CPPFLAGS=-ansi -pedantic -Wall -Wextra -std=c++11 -g -DMAP
-	LDFLAGS=
-else
-	CPPFLAGS=-ansi -pedantic -Wall -std=c++11
-	LDFLAGS=
-endif
 
-SRCDIR=./src
-OBJDIR=./obj
-SOURCES=$(wildcard $(SRCDIR)/*.cpp)
-OBJECTS :=$(subst $(SRCDIR), $(OBJDIR), $(SOURCES:.cpp=.o))
-EXECUTABLE=trajet
+#Cibles
+.PHONY: all dev run clean fclean info help
 
 all: $(EXECUTABLE)
-ifeq ($(DEBUG),oui)
-	@$(ECHO) "\n----------Attention, le mode debug est activé !----------"
-else
-	@$(ECHO) "\n----------Mode debug désactivé----------"
-endif
-	
-$(EXECUTABLE): $(OBJECTS)
-	@$(ECHO) "\n----------Edition des liens----------\néxécutable : $(EXECUTABLE)"
-	g++ -o $@ $^ $(LDFLAGS)
-	@$(ECHO) "\n----------Executable correctement compilé----------"
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
-	@$(ECHO) "\n----------Compilation du fichier de $<----------"
-	g++ -c $< -o $@  $(CPPFLAGS)
+dev: CXXFLAGS+=$(DEVFLAGS)
+dev: clean all
+	@$(ECHO) [MAKE] -- MODE DEVELOPPEMENT --
+
+run: all
+	@./$(EXECUTABLE)
 
 clean:
-	@$(ECHO) "\n----------Nettoyage des fichiers compilés/éxécutables----------"
-	rm $(EXECUTABLE) $(OBJDIR)/*.o
+	@$(ECHO) [MAKE] Suppression du dossier $(OBJ_DIR)
+	@$(RM) $(RMFLAGS) $(OBJ_DIR)
+
+fclean:
+	@$(ECHO) [MAKE] Suppression du dossier $(OBJ_DIR) et de $(EXECUTABLE)
+	@$(RM) $(RMFLAGS) $(EXECUTABLE) $(OBJ_DIR)
+
+help:
+	@$(ECHO) "[*] make         Compilation et édition des liens"
+	@$(ECHO) "[*] make dev     Compilation en mode développement et édition des liens"
+	@$(ECHO) "[*] make run     Compilation, édition des liens et exécution du programme"
+	@$(ECHO) "[*] make clean   Suppression des fichiers objets"
+	@$(ECHO) "[*] make fclean  Suppression des fichiers objets et de l'exécutable"
+	@$(ECHO) "[*] make info    Informations sur les fichiers"
+
+info:
+	@$(ECHO) "[*] Exécutable:      ${EXECUTABLE}"
+	@$(ECHO) "[*] Dossier sources: ${SRC_DIR}"
+	@$(ECHO) "[*] Dossier objets:  ${OBJ_DIR}"
+	@$(ECHO) "[*] Sources:         ${SRC:${SRC_DIR}%=%}"
+	@$(ECHO) "[*] Objets:          ${OBJ:${OBJ_DIR}%=%}"
+
+
+$(EXECUTABLE): $(OBJ)
+	@$(ECHO) [MAKE] Création de l\'exécutable $(EXECUTABLE)
+	@$(LD) $^ -o $@ $(LIBS)
+
+$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp | $(OBJ_DIR)
+	@$(ECHO) [MAKE] Compilation de $<
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$(OBJ_DIR):
+	@$(ECHO) [MAKE] Création du fichier $(OBJ_DIR)
+	@$(MKDIR) -p $@
