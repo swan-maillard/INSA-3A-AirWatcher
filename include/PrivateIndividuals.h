@@ -15,6 +15,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <string>
+#include <Sensor.h>
 
 class PrivateIndividuals {
 
@@ -28,10 +29,15 @@ class PrivateIndividuals {
     // Destructeur
     ~PrivateIndividuals();
 
+    int getBonReduction();
+
 //----------------------------------------------------------------- PRIVE
   protected:
 //----------------------------------------------------- Attributs protégés
-
+  int points;
+  int id;
+  int isExcluded;
+  vector<Sensor> sensorsProvided;
 
 };
 
