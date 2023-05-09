@@ -7,8 +7,8 @@
 *************************************************************************/
 
 //---------- Interface de la classe <Position> (fichier Position.h) ----------------
-#if ! defined (LINKS_LIST_H)
-#define LINKS_LIST_H
+#if ! defined (POSITION_H)
+#define POSITION_H
 
 //---------------------------------------------------------------- INCLUDE
 

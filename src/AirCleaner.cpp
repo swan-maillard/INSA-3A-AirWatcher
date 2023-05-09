@@ -23,13 +23,24 @@ using namespace std;
 
 //----------------------------------------------------------------- PUBLIC
 
-AirCleaner::AirCleaner() {
+bool AirCleaner::addWorkingHours(string &start, string &end)
+{
+    Date startdate(start);
+    Date enddate(end);
+    workingHours.insert(make_pair(startdate, enddate));
+}
+
+AirCleaner::AirCleaner(double &uneLongitude, double &uneLatitude, int &unProviderId, int &unCleanerId) : position(Position(uneLongitude, uneLatitude))
+{
   #ifdef MAP
       cout << "Construction de <AirCleaner>" << endl;
   #endif
+    providerId = unProviderId;
+    cleanerId = unCleanerId;
 }
 
-AirCleaner::~AirCleaner() {
+AirCleaner::~AirCleaner() 
+{
   #ifdef MAP
       cout << "Destruction de <AirCleaner>" << endl;
   #endif

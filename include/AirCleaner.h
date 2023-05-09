@@ -7,14 +7,16 @@
 *************************************************************************/
 
 //---------- Interface de la classe <AirCleaner> (fichier AirCleaner.h) ----------------
-#if ! defined (LINKS_LIST_H)
-#define LINKS_LIST_H
+#if ! defined (AIRCLEANER_H)
+#define AIRCLEANER_H
 
 //---------------------------------------------------------------- INCLUDE
-
+#include "Position.h"
+#include "Date.h"
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <string>
+#include <map>
 
 class AirCleaner {
 
@@ -22,17 +24,23 @@ class AirCleaner {
   public:
 //----------------------------------------------------- Méthodes publiques
 
+    bool addWorkingHours(string &start, string &end);
     // Constructeur
-    AirCleaner();
+    AirCleaner(double &longitude, double &latitude, int &providerId, int &cleanerId);
 
     // Destructeur
     ~AirCleaner();
 
 //----------------------------------------------------------------- PRIVE
   protected:
+    Position position;
+    int providerId;
+    int cleanerId;
+    map<Date, Date> workingHours;
+
 //----------------------------------------------------- Attributs protégés
 
 
 };
 
-#endif // ARICLEANER_H
+#endif // AIRCLEANER_H
