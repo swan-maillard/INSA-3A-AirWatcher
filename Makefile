@@ -7,7 +7,7 @@ MKDIR		:= 	mkdir
 
 #Options
 CXXFLAGS	:= 	-ansi -pedantic -Wall -std=c++11
-DEVFLAGS	:= 	-g -DMAP
+DEBUGFLAGS	:= 	-g -DMAP
 RMFLAGS		:= 	-rf
 
 #Fichiers
@@ -23,9 +23,9 @@ OBJ			:= 	$(SRC:${SRC_DIR}%.cpp=$(OBJ_DIR)%.o)
 
 all: $(EXECUTABLE)
 
-dev: CXXFLAGS+=$(DEVFLAGS)
-dev: clean all
-	@$(ECHO) [MAKE] -- MODE DEVELOPPEMENT --
+debug: CXXFLAGS+=$(DEBUGFLAGS)
+debug: clean all
+	@$(ECHO) [MAKE] -- MODE DEBUG --
 
 run: all
 	@./$(EXECUTABLE)
@@ -40,7 +40,7 @@ fclean:
 
 help:
 	@$(ECHO) "[*] make         Compilation et édition des liens"
-	@$(ECHO) "[*] make dev     Compilation en mode développement et édition des liens"
+	@$(ECHO) "[*] make debug   Compilation en mode debug et édition des liens"
 	@$(ECHO) "[*] make run     Compilation, édition des liens et exécution du programme"
 	@$(ECHO) "[*] make clean   Suppression des fichiers objets"
 	@$(ECHO) "[*] make fclean  Suppression des fichiers objets et de l'exécutable"
