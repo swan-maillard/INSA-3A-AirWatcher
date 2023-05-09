@@ -35,3 +35,10 @@ User::~User() {
   #endif
 }
 
+int User::checkPwd(const string & p) const
+{
+  int good = 0;
+  if(p.compare(this->password) == 0)
+    good = 1;
+  return good;
+}

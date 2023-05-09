@@ -7,14 +7,19 @@
 *************************************************************************/
 
 //---------- Interface de la classe <System> (fichier System.h) ----------------
-#if ! defined (LINKS_LIST_H)
-#define LINKS_LIST_H
+#if ! defined (SYSTEM_H)
+#define SYSTEM_H
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <string>
+#include <vector>
+#include "AirCleaner.h"
+#include "Sensor.h"
+#include "PrivateIndividuals.h"
+#include "FileAccess.h"
 
 class System {
 
@@ -28,8 +33,21 @@ class System {
     // Destructeur
     ~System();
 
+    vector<Sensor> listSensors() const;
+
+    Sensor infoSensor(const int & id) const;
+
+    vector<AirCleaner> listAirCleaners() const;
+
+
 //----------------------------------------------------------------- PRIVE
+  private:
+    vector<PrivateIndividuals> individuals;
+//----------------------------------------------------------------- PROTECTED
   protected:
+    FileAccess factory;
+    vector<Sensor> sensors;
+    vector<AirCleaner> airCleaners;
 //----------------------------------------------------- Attributs protégés
 
 

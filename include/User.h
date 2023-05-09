@@ -7,8 +7,8 @@
 *************************************************************************/
 
 //---------- Interface de la classe <User> (fichier User.h) ----------------
-#if ! defined (LINKS_LIST_H)
-#define LINKS_LIST_H
+#if ! defined (USER_H)
+#define USER_H
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -28,7 +28,12 @@ class User {
     // Destructeur
     ~User();
 
+    int checkPwd(const string & p) const;
+
 //----------------------------------------------------------------- PRIVE
+  private:
+    string login;
+    string password;
   protected:
 //----------------------------------------------------- Attributs protégés
 

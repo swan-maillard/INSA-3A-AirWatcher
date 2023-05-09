@@ -35,3 +35,11 @@ System::~System() {
   #endif
 }
 
+System::Sensor infoSensor(const int & id) const
+{
+  vector<Sensor>::iterator i;
+  i = sensors.begin();
+  while(i != end
+}
+
+
