@@ -7,14 +7,15 @@
 *************************************************************************/
 
 //---------- Interface de la classe <PrivateIndividuals> (fichier PrivateIndividuals.h) ----------------
-#if ! defined (LINKS_LIST_H)
-#define LINKS_LIST_H
+#if ! defined (PRIVATE_INDIVIDUALS_H)
+#define PRIVATE_INDIVIDUALS_H
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <string>
+#include <Sensor.h>
 
 class PrivateIndividuals {
 
@@ -28,10 +29,15 @@ class PrivateIndividuals {
     // Destructeur
     ~PrivateIndividuals();
 
+    int getBonReduction();
+
 //----------------------------------------------------------------- PRIVE
   protected:
 //----------------------------------------------------- Attributs protégés
-
+  int points;
+  int id;
+  int isExcluded;
+  vector<Sensor> sensorsProvided;
 
 };
 
