@@ -6,15 +6,28 @@
 #   e-mail               : hugo.warin@insa-lyon.fr & clement.giraudon@insa-lyon.fr
 #**********************************************************************************#
 
-# Pour compiler le programme
-# $make
-# Pour effacer les fichiers objets et executables
-# $make clean
-# Code source dans le dossier ./sourceCode
-# Fichiers objets dans le dossier ./objects
-# Executable généré dans le répertoire courant
 DEBUG=non
 ECHO = echo -e
+
+#Outils
+CXX			:=	g++
+LD			:= 	g++
+RM			:= 	rm
+ECHO		:= 	echo -e
+MKDIR		:= 	mkdir
+DEBUG		:=  non
+
+#Options
+CXXFLAGS	:= 	-ansi -pedantic -Wall -std=c++11 -g
+DEVFLAGS	:= 	-DMAP
+RMFLAGS		:= 	-rf
+
+#Fichiers
+EXECUTABLE	:= 	analog
+SRC_DIR		:= 	src/
+OBJ_DIR		:= 	bin/
+SRC			:= 	$(wildcard $(SRC_DIR)*.cpp)
+OBJ			:= 	$(SRC:${SRC_DIR}%.cpp=$(OBJ_DIR)%.o)
 
 ifeq ($(DEBUG),oui)
 	CPPFLAGS=-ansi -pedantic -Wall -Wextra -std=c++11 -g -DMAP
@@ -24,8 +37,8 @@ else
 	LDFLAGS=
 endif
 
-SRCDIR=./sourceCode
-OBJDIR=./objects
+SRCDIR=./src
+OBJDIR=./obj
 SOURCES=$(wildcard $(SRCDIR)/*.cpp)
 OBJECTS :=$(subst $(SRCDIR), $(OBJDIR), $(SOURCES:.cpp=.o))
 EXECUTABLE=trajet
