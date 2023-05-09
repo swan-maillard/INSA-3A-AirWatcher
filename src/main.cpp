@@ -1,6 +1,7 @@
 using namespace std;
 #include <iostream>
 #include <string>
+#include <limits>
 
 int main (int argc, char * argv[]) {
     int choice;
@@ -12,10 +13,10 @@ int main (int argc, char * argv[]) {
         cout << "\t 2 - Quitter l'application" << endl;
         cin >> choice;
 
-        if (!cin) {
+        if (!cin || !cin.good()) {
             choice = -1;
             cin.clear();
-            cin.ignore();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
 
         switch (choice) {
@@ -26,7 +27,7 @@ int main (int argc, char * argv[]) {
                 cout << "À bientôt sur AitWatcher !" << endl;
                 break;
             default:
-                cout << "Veuillez choisir une option valide (entre 1 à 2)" << endl;
+                cout << "Veuillez choisir une option valide (nombre compris entre 1 et 2)" << endl;
         }
 
         cout << endl;
