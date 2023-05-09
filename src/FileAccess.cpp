@@ -31,13 +31,24 @@ FileAccess::FileAccess() {
 
 }
 
-void FileAccess::generateCleaners(string providers, string cleaner){
-  ifstream prov;
-  prov.open(providers);
-  if (!prov){
+void FileAccess::generateCleaners(string providersFN, string cleanerFN){
+  ifstream providersFile;
+  providersFile.open(providersFN);
+  if (!providersFile){
     cout << "erreur lors de l'ouverture du fichier providers";
     return;
   }
+  ifstream cleanersFiles;
+  cleanersFiles.open(cleanerFN);
+  if (!cleanersFiles){
+    cout << "erreur lors de l'ouverture du fichier cleaner";
+    return;
+  }
+  string provider, cleaner;
+  getline(providersFile, provider, ';');
+  getline(providersFile, cleaner, ';');
+
+
 }
 
 FileAccess::~FileAccess() {
