@@ -22,14 +22,27 @@ class Position {
   public:
 //----------------------------------------------------- Méthodes publiques
 
+    bool isIn(Position posCentre, double rayon);
+
+    double calculateDistance(Position pos);
+
+    double getLongitude();
+
+    double getLatitude();
+
+    void setLongitude(double longitude);
+
+    void setLatitude(double latitude);
     // Constructeur
-    Position();
+    Position(double longitude, double latitude);
 
     // Destructeur
     ~Position();
 
 //----------------------------------------------------------------- PRIVE
   protected:
+    double longitude;
+    double latitude;
 //----------------------------------------------------- Attributs protégés
 
 
