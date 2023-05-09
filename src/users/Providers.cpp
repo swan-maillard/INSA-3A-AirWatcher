@@ -1,38 +1,37 @@
 /*************************************************************************
-    Sensor
+    Providers
                              -------------------
     début                : 13/12/2022
     copyright            : (C) 2022 par WARIN Hugo, BIAUD, Alexandre, MAILLARD Swan, GIRAUDON Clément
     e-mail               : hugo.warin@insa-lyon.fr
 *************************************************************************/
 
-//---------- Interface de la classe <Sensor> (fichier Sensor.h) ----------------
-#if ! defined (SENSOR_H)
-#define SENSOR_H
+
+//---------- Réalisation de la classe <Providers> (fichier Providers.cpp) ------------
+
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
 using namespace std;
+#include <iostream>
 #include <string>
 
-class Sensor {
+//------------------------------------------------------ Include personnel
+#include "../../include/Providers.h"
+
 
 //----------------------------------------------------------------- PUBLIC
-  public:
-//----------------------------------------------------- Méthodes publiques
 
-    // Constructeur
-    Sensor();
+Providers::Providers() {
+  #ifdef MAP
+      cout << "Construction de <Providers>" << endl;
+  #endif
+}
 
-    // Destructeur
-    ~Sensor();
+Providers::~Providers() {
+  #ifdef MAP
+      cout << "Destruction de <Providers>" << endl;
+  #endif
+}
 
-//----------------------------------------------------------------- PRIVE
-  protected:
-//----------------------------------------------------- Attributs protégés
-
-
-};
-
-#endif // SENSOR_H

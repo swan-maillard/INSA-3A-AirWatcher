@@ -6,33 +6,32 @@
     e-mail               : hugo.warin@insa-lyon.fr
 *************************************************************************/
 
-//---------- Interface de la classe <Sensor> (fichier Sensor.h) ----------------
-#if ! defined (SENSOR_H)
-#define SENSOR_H
+
+//---------- Réalisation de la classe <Sensor> (fichier Sensor.cpp) ------------
+
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
 using namespace std;
+#include <iostream>
 #include <string>
 
-class Sensor {
+//------------------------------------------------------ Include personnel
+#include "../../include/Sensor.h"
+
 
 //----------------------------------------------------------------- PUBLIC
-  public:
-//----------------------------------------------------- Méthodes publiques
 
-    // Constructeur
-    Sensor();
+Sensor::Sensor() {
+  #ifdef MAP
+      cout << "Construction de <Sensor>" << endl;
+  #endif
+}
 
-    // Destructeur
-    ~Sensor();
+Sensor::~Sensor() {
+  #ifdef MAP
+      cout << "Destruction de <Sensor>" << endl;
+  #endif
+}
 
-//----------------------------------------------------------------- PRIVE
-  protected:
-//----------------------------------------------------- Attributs protégés
-
-
-};
-
-#endif // SENSOR_H

@@ -1,38 +1,48 @@
 /*************************************************************************
-    Sensor
+    FileAccess
                              -------------------
     début                : 13/12/2022
     copyright            : (C) 2022 par WARIN Hugo, BIAUD, Alexandre, MAILLARD Swan, GIRAUDON Clément
     e-mail               : hugo.warin@insa-lyon.fr
 *************************************************************************/
 
-//---------- Interface de la classe <Sensor> (fichier Sensor.h) ----------------
-#if ! defined (SENSOR_H)
-#define SENSOR_H
+
+//---------- Réalisation de la classe <FileAccess> (fichier FileAccess.cpp) ------------
+
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
 using namespace std;
+#include <iostream>
 #include <string>
 
-class Sensor {
+//------------------------------------------------------ Include personnel
+#include "../../include/FileAccess.h"
+
 
 //----------------------------------------------------------------- PUBLIC
-  public:
-//----------------------------------------------------- Méthodes publiques
 
-    // Constructeur
-    Sensor();
-
-    // Destructeur
-    ~Sensor();
-
-//----------------------------------------------------------------- PRIVE
-  protected:
-//----------------------------------------------------- Attributs protégés
+FileAccess::FileAccess() {
+  #ifdef MAP
+      cout << "Construction de <FileAccess>" << endl;
+  #endif
 
 
-};
+}
 
-#endif // SENSOR_H
+void FileAccess::generateCleaners(string providers, string cleaner){
+  ifstream prov;
+  prov.open(providers);
+  if (!prov){
+    cout << "erreur lors de l'ouverture du fichier providers";
+    return;
+  }
+}
+
+FileAccess::~FileAccess() {
+  #ifdef MAP
+      cout << "Destruction de <FileAccess>" << endl;
+  #endif
+}
+

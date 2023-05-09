@@ -7,8 +7,8 @@
 *************************************************************************/
 
 //---------- Interface de la classe <PrivateIndividuals> (fichier PrivateIndividuals.h) ----------------
-#if ! defined (LINKS_LIST_H)
-#define LINKS_LIST_H
+#if ! defined (PRIVATE_INDIVIDUALS_H)
+#define PRIVATE_INDIVIDUALS_H
 
 //---------------------------------------------------------------- INCLUDE
 
