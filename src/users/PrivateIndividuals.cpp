@@ -1,5 +1,5 @@
 /*************************************************************************
-    AirCleanerAnalysis
+    PrivateIndividuals
                              -------------------
     début                : 13/12/2022
     copyright            : (C) 2022 par WARIN Hugo, BIAUD, Alexandre, MAILLARD Swan, GIRAUDON Clément
@@ -7,7 +7,7 @@
 *************************************************************************/
 
 
-//---------- Réalisation de la classe <AirCleanerAnalysis> (fichier AirCleanerAnalysis.cpp) ------------
+//---------- Réalisation de la classe <PrivateIndividuals> (fichier PrivateIndividuals.cpp) ------------
 
 
 //---------------------------------------------------------------- INCLUDE
@@ -18,20 +18,20 @@ using namespace std;
 #include <string>
 
 //------------------------------------------------------ Include personnel
-#include "../include/AirCleanerAnalysis.h"
+#include "../../include/PrivateIndividuals.h"
 
 
 //----------------------------------------------------------------- PUBLIC
 
-AirCleanerAnalysis::AirCleanerAnalysis() {
+PrivateIndividuals::PrivateIndividuals() {
   #ifdef MAP
-      cout << "Construction de <AirCleanerAnalysis>" << endl;
+      cout << "Construction de <PrivateIndividuals>" << endl;
   #endif
 }
 
-AirCleanerAnalysis::~AirCleanerAnalysis() {
+PrivateIndividuals::~PrivateIndividuals() {
   #ifdef MAP
-      cout << "Destruction de <AirCleanerAnalysis>" << endl;
+      cout << "Destruction de <PrivateIndividuals>" << endl;
   #endif
 }
 

@@ -19,7 +19,7 @@ using namespace std;
 #include <cmath>
 
 //------------------------------------------------------ Include personnel
-#include "../include/Position.h"
+#include "../../include/Position.h"
 
 
 //----------------------------------------------------------------- PUBLIC

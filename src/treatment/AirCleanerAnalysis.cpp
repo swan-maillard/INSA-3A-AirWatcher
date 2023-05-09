@@ -1,5 +1,5 @@
 /*************************************************************************
-    System
+    AirCleanerAnalysis
                              -------------------
     début                : 13/12/2022
     copyright            : (C) 2022 par WARIN Hugo, BIAUD, Alexandre, MAILLARD Swan, GIRAUDON Clément
@@ -7,7 +7,7 @@
 *************************************************************************/
 
 
-//---------- Réalisation de la classe <System> (fichier System.cpp) ------------
+//---------- Réalisation de la classe <AirCleanerAnalysis> (fichier AirCleanerAnalysis.cpp) ------------
 
 
 //---------------------------------------------------------------- INCLUDE
@@ -18,28 +18,20 @@ using namespace std;
 #include <string>
 
 //------------------------------------------------------ Include personnel
-#include "../include/System.h"
+#include "../../include/AirCleanerAnalysis.h"
 
 
 //----------------------------------------------------------------- PUBLIC
 
-System::System() {
+AirCleanerAnalysis::AirCleanerAnalysis() {
   #ifdef MAP
-      cout << "Construction de <System>" << endl;
+      cout << "Construction de <AirCleanerAnalysis>" << endl;
   #endif
 }
 
-System::~System() {
+AirCleanerAnalysis::~AirCleanerAnalysis() {
   #ifdef MAP
-      cout << "Destruction de <System>" << endl;
+      cout << "Destruction de <AirCleanerAnalysis>" << endl;
   #endif
 }
-
-System::Sensor infoSensor(const int & id) const
-{
-  vector<Sensor>::iterator i;
-  i = sensors.begin();
-  while(i != end
-}
-
 

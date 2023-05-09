@@ -7,8 +7,8 @@
 *************************************************************************/
 
 //---------- Interface de la classe <AirCleanerAnalysis> (fichier AirCleanerAnalysis.h) ----------------
-#if ! defined (LINKS_LIST_H)
-#define LINKS_LIST_H
+#if ! defined (AIR_CLEANER_ANALYSIS)
+#define AIR_CLEANER_ANALYSIS
 
 //---------------------------------------------------------------- INCLUDE
 

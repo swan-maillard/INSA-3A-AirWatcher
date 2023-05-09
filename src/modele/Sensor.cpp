@@ -1,5 +1,5 @@
 /*************************************************************************
-    Providers
+    Sensor
                              -------------------
     début                : 13/12/2022
     copyright            : (C) 2022 par WARIN Hugo, BIAUD, Alexandre, MAILLARD Swan, GIRAUDON Clément
@@ -7,7 +7,7 @@
 *************************************************************************/
 
 
-//---------- Réalisation de la classe <Providers> (fichier Providers.cpp) ------------
+//---------- Réalisation de la classe <Sensor> (fichier Sensor.cpp) ------------
 
 
 //---------------------------------------------------------------- INCLUDE
@@ -18,20 +18,20 @@ using namespace std;
 #include <string>
 
 //------------------------------------------------------ Include personnel
-#include "../include/Providers.h"
+#include "../../include/Sensor.h"
 
 
 //----------------------------------------------------------------- PUBLIC
 
-Providers::Providers() {
+Sensor::Sensor() {
   #ifdef MAP
-      cout << "Construction de <Providers>" << endl;
+      cout << "Construction de <Sensor>" << endl;
   #endif
 }
 
-Providers::~Providers() {
+Sensor::~Sensor() {
   #ifdef MAP
-      cout << "Destruction de <Providers>" << endl;
+      cout << "Destruction de <Sensor>" << endl;
   #endif
 }
 

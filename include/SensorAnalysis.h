@@ -7,8 +7,8 @@
 *************************************************************************/
 
 //---------- Interface de la classe <SensorAnalysis> (fichier SensorAnalysis.h) ----------------
-#if ! defined (LINKS_LIST_H)
-#define LINKS_LIST_H
+#if ! defined (SENSOR_ANALYSIS_H)
+#define SENSOR_ANALYSIS_H
 
 //---------------------------------------------------------------- INCLUDE
 

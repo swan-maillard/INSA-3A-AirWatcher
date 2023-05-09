@@ -1,5 +1,5 @@
 /*************************************************************************
-    SensorAnalysis
+    AirCleaner
                              -------------------
     début                : 13/12/2022
     copyright            : (C) 2022 par WARIN Hugo, BIAUD, Alexandre, MAILLARD Swan, GIRAUDON Clément
@@ -7,7 +7,7 @@
 *************************************************************************/
 
 
-//---------- Réalisation de la classe <SensorAnalysis> (fichier SensorAnalysis.cpp) ------------
+//---------- Réalisation de la classe <AirCleaner> (fichier AirCleaner.cpp) ------------
 
 
 //---------------------------------------------------------------- INCLUDE
@@ -18,20 +18,31 @@ using namespace std;
 #include <string>
 
 //------------------------------------------------------ Include personnel
-#include "../include/SensorAnalysis.h"
+#include "../../include/AirCleaner.h"
 
 
 //----------------------------------------------------------------- PUBLIC
 
-SensorAnalysis::SensorAnalysis() {
-  #ifdef MAP
-      cout << "Construction de <SensorAnalysis>" << endl;
-  #endif
+bool AirCleaner::addWorkingHours(string &start, string &end)
+{
+    Date startdate(start);
+    Date enddate(end);
+    workingHours.insert(make_pair(startdate, enddate));
 }
 
-SensorAnalysis::~SensorAnalysis() {
+AirCleaner::AirCleaner(double &uneLongitude, double &uneLatitude, int &unProviderId, int &unCleanerId) : position(Position(uneLongitude, uneLatitude))
+{
   #ifdef MAP
-      cout << "Destruction de <SensorAnalysis>" << endl;
+      cout << "Construction de <AirCleaner>" << endl;
+  #endif
+    providerId = unProviderId;
+    cleanerId = unCleanerId;
+}
+
+AirCleaner::~AirCleaner() 
+{
+  #ifdef MAP
+      cout << "Destruction de <AirCleaner>" << endl;
   #endif
 }
 

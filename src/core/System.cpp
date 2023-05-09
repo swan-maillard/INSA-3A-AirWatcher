@@ -1,5 +1,5 @@
 /*************************************************************************
-    PrivateIndividuals
+    System
                              -------------------
     début                : 13/12/2022
     copyright            : (C) 2022 par WARIN Hugo, BIAUD, Alexandre, MAILLARD Swan, GIRAUDON Clément
@@ -7,7 +7,7 @@
 *************************************************************************/
 
 
-//---------- Réalisation de la classe <PrivateIndividuals> (fichier PrivateIndividuals.cpp) ------------
+//---------- Réalisation de la classe <System> (fichier System.cpp) ------------
 
 
 //---------------------------------------------------------------- INCLUDE
@@ -18,20 +18,28 @@ using namespace std;
 #include <string>
 
 //------------------------------------------------------ Include personnel
-#include "../include/PrivateIndividuals.h"
+#include "../../include/System.h"
 
 
 //----------------------------------------------------------------- PUBLIC
 
-PrivateIndividuals::PrivateIndividuals() {
+System::System() {
   #ifdef MAP
-      cout << "Construction de <PrivateIndividuals>" << endl;
+      cout << "Construction de <System>" << endl;
   #endif
 }
 
-PrivateIndividuals::~PrivateIndividuals() {
+System::~System() {
   #ifdef MAP
-      cout << "Destruction de <PrivateIndividuals>" << endl;
+      cout << "Destruction de <System>" << endl;
   #endif
 }
+
+System::Sensor infoSensor(const int & id) const
+{
+  vector<Sensor>::iterator i;
+  i = sensors.begin();
+  while(i != end
+}
+
 

@@ -1,5 +1,5 @@
 /*************************************************************************
-    Sensor
+    SensorAnalysis
                              -------------------
     début                : 13/12/2022
     copyright            : (C) 2022 par WARIN Hugo, BIAUD, Alexandre, MAILLARD Swan, GIRAUDON Clément
@@ -7,7 +7,7 @@
 *************************************************************************/
 
 
-//---------- Réalisation de la classe <Sensor> (fichier Sensor.cpp) ------------
+//---------- Réalisation de la classe <SensorAnalysis> (fichier SensorAnalysis.cpp) ------------
 
 
 //---------------------------------------------------------------- INCLUDE
@@ -18,20 +18,20 @@ using namespace std;
 #include <string>
 
 //------------------------------------------------------ Include personnel
-#include "../include/Sensor.h"
+#include "../../include/SensorAnalysis.h"
 
 
 //----------------------------------------------------------------- PUBLIC
 
-Sensor::Sensor() {
+SensorAnalysis::SensorAnalysis() {
   #ifdef MAP
-      cout << "Construction de <Sensor>" << endl;
+      cout << "Construction de <SensorAnalysis>" << endl;
   #endif
 }
 
-Sensor::~Sensor() {
+SensorAnalysis::~SensorAnalysis() {
   #ifdef MAP
-      cout << "Destruction de <Sensor>" << endl;
+      cout << "Destruction de <SensorAnalysis>" << endl;
   #endif
 }
 

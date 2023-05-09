@@ -1,5 +1,5 @@
 /*************************************************************************
-    Gouvernement
+    Providers
                              -------------------
     début                : 13/12/2022
     copyright            : (C) 2022 par WARIN Hugo, BIAUD, Alexandre, MAILLARD Swan, GIRAUDON Clément
@@ -7,7 +7,7 @@
 *************************************************************************/
 
 
-//---------- Réalisation de la classe <Gouvernement> (fichier Gouvernement.cpp) ------------
+//---------- Réalisation de la classe <Providers> (fichier Providers.cpp) ------------
 
 
 //---------------------------------------------------------------- INCLUDE
@@ -18,20 +18,20 @@ using namespace std;
 #include <string>
 
 //------------------------------------------------------ Include personnel
-#include "../include/Gouvernement.h"
+#include "../../include/Providers.h"
 
 
 //----------------------------------------------------------------- PUBLIC
 
-Gouvernement::Gouvernement() {
+Providers::Providers() {
   #ifdef MAP
-      cout << "Construction de <Gouvernement>" << endl;
+      cout << "Construction de <Providers>" << endl;
   #endif
 }
 
-Gouvernement::~Gouvernement() {
+Providers::~Providers() {
   #ifdef MAP
-      cout << "Destruction de <Gouvernement>" << endl;
+      cout << "Destruction de <Providers>" << endl;
   #endif
 }
 

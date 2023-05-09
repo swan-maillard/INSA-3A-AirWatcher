@@ -32,10 +32,11 @@ class User {
 
 //----------------------------------------------------------------- PRIVE
   private:
-    string login;
-    string password;
+    
   protected:
 //----------------------------------------------------- Attributs protégés
+    string login;
+    string password;
 
 
 };

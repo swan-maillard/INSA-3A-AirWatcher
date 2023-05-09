@@ -7,8 +7,8 @@
 *************************************************************************/
 
 //---------- Interface de la classe <Sensor> (fichier Sensor.h) ----------------
-#if ! defined (LINKS_LIST_H)
-#define LINKS_LIST_H
+#if ! defined (SENSOR_H)
+#define SENSOR_H
 
 //---------------------------------------------------------------- INCLUDE
 
