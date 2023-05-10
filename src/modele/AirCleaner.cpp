@@ -31,13 +31,13 @@ bool AirCleaner::addWorkingHours(string &start, string &end)
     return true;
 }
 
-AirCleaner::AirCleaner(double &uneLongitude, double &uneLatitude, int &unProviderId, int &unCleanerId) : position(Position(uneLongitude, uneLatitude))
+AirCleaner::AirCleaner(string &aLatitude, string &aLongitude, int aProviderId, int aCleanerId) : position(Position(aLatitude, aLongitude))
 {
   #ifdef MAP
       cout << "Construction de <AirCleaner>" << endl;
   #endif
-    providerId = unProviderId;
-    cleanerId = unCleanerId;
+    providerId = aProviderId;
+    cleanerId = aCleanerId;
 }
 
 AirCleaner::~AirCleaner() 
@@ -47,3 +47,9 @@ AirCleaner::~AirCleaner()
   #endif
 }
 
+ostream & operator << (ostream& os, const AirCleaner& AC)
+{
+    os << "Le AirCleaner :\nID : " << AC.cleanerId << "\tproviderID : " << AC.providerId << "\n A " << AC.position;
+    ///TODO ajouter les heures de travail
+    return os;
+} 

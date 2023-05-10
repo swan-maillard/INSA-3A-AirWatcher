@@ -15,7 +15,11 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <string>
+#include <vector>
 #include <fstream>
+
+#include "AirCleaner.h"
+#include "Sensor.h"
 
 class FileAccess {
 
@@ -26,7 +30,7 @@ class FileAccess {
     // Constructeur
     FileAccess();
 
-    void generateCleaners(string providers = "providers.csv", string cleaners = "cleaners.csv");
+    vector<AirCleaner*> generateCleaners(string providers = "data/providers.csv", string cleaners = "data/cleaners.csv");
 
     // Destructeur
     ~FileAccess();

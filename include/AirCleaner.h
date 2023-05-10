@@ -26,10 +26,12 @@ class AirCleaner {
 
     bool addWorkingHours(string &start, string &end);
     // Constructeur
-    AirCleaner(double &longitude, double &latitude, int &providerId, int &cleanerId);
+    AirCleaner(string &aLatitude, string &aLongitude, int providerId, int cleanerId);
 
     // Destructeur
     ~AirCleaner();
+
+    friend std::ostream& operator << (std::ostream& os, const AirCleaner & AC);
 
 //----------------------------------------------------------------- PRIVE
   protected:

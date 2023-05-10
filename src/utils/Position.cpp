@@ -52,9 +52,39 @@ Position::Position(double latitude, double longitude) {
     this->longitude = longitude;
 }
 
+Position::Position(string lat, string lon) {
+  #ifdef MAP
+      cout << "Construction de <Position> avec this = " << this << endl;
+  #endif
+    this->latitude = strToDouble(lat);
+    this->longitude = strToDouble(lon);
+}
+
 Position::~Position() {
   #ifdef MAP
       cout << "Destruction de <Position> avec this = " << this << endl;
   #endif
 }
 
+double Position::strToDouble(string str){
+    double nb = 0;
+    long unsigned int i = 0, p = 10;
+    while (str.at(i) != '.'){
+        nb *= 10;
+        nb += str.at(i) - 48;
+        i++;
+    }
+    i++;
+    while (i < str.length()){
+        nb += double(str.at(i) - 48 ) / p;
+        p*=10;
+        i++;
+    }
+    return nb;
+}
+
+ostream & operator << (ostream& os, const Position& unePos)
+{
+    os << "La position : latitude :" << unePos.latitude << "; longitude : " << unePos.longitude;
+    return os;
+} 

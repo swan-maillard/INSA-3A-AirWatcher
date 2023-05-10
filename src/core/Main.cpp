@@ -2,6 +2,7 @@ using namespace std;
 #include <iostream>
 #include <string>
 #include <limits>
+#include <vector>
 
 int main (int argc, char * argv[]) {
     int choice;

@@ -30,19 +30,25 @@ class Position {
 
     double getLatitude();
 
+    double strToDouble(string str);
+
     void setLongitude(double longitude);
 
     void setLatitude(double latitude);
     // Constructeur
-    Position(double longitude, double latitude);
+    Position(double latitude, double longitude);
+
+    Position(string lat = "0.0", string lon = "0.0");
+
+    friend std::ostream& operator << (std::ostream& os, const Position & unePos);
 
     // Destructeur
     ~Position();
 
 //----------------------------------------------------------------- PRIVE
   protected:
-    double longitude;
     double latitude;
+    double longitude;
 //----------------------------------------------------- Attributs protégés
 
 

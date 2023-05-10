@@ -15,7 +15,6 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
-#include <string>
 
 //------------------------------------------------------ Include personnel
 #include "../../include/FileAccess.h"
@@ -31,24 +30,50 @@ FileAccess::FileAccess() {
 
 }
 
-void FileAccess::generateCleaners(string providersFN, string cleanerFN){
+vector<AirCleaner*> FileAccess::generateCleaners(string providersFN, string cleanerFN){
+  cout << "on entre dans le dur\n";
   ifstream providersFile;
   providersFile.open(providersFN);
   if (!providersFile){
     cout << "erreur lors de l'ouverture du fichier providers";
-    return;
+    exit(-1);
   }
-  ifstream cleanersFiles;
-  cleanersFiles.open(cleanerFN);
-  if (!cleanersFiles){
+  ifstream cleanersFile;
+  cleanersFile.open(cleanerFN);
+  if (!cleanersFile){
     cout << "erreur lors de l'ouverture du fichier cleaner";
-    return;
+    exit(-1);
   }
-  string provider, cleaner;
-  getline(providersFile, provider, ';');
-  getline(providersFile, cleaner, ';');
+  cout << "les fichiers sont cree correctement\n";
 
+  vector<AirCleaner*> lesCleaners(0);
+  string provider, cleaner, temp, lat, lon, deb, fin;
+  getline(cleanersFile, temp, ';');
+  while (getline(providersFile, provider, ';'), !providersFile.eof()){
+    getline(providersFile, cleaner, ';');
+    getline(cleanersFile, lat, ';');
+    getline(cleanersFile, lon, ';');
+    AirCleaner* ac = new AirCleaner(lat, lon, provider.at(provider.length()-1) - 48, cleaner.at(7) - 48);
+    //cout << *ac << endl;
+    lesCleaners.push_back(ac);
+    while (temp == cleaner){
 
+      getline(cleanersFile, deb, ';');
+      getline(cleanersFile, fin, ';');
+      ac->addWorkingHours(deb, fin);
+      getline(cleanersFile, temp, ';');
+      if (cleaner == temp) {
+        getline(cleanersFile, lat, ';');
+        getline(cleanersFile, lon, ';');
+      }
+    }
+  }
+  cout << "la liste des cleaners : \n";
+  for (int i = 0; i < 2 ; i++){
+    AirCleaner* c = lesCleaners.at(i);
+    cout << *c;
+  }
+  return lesCleaners;
 }
 
 FileAccess::~FileAccess() {
