@@ -13,8 +13,7 @@ void testerGenerationCleaner() {
     cout << "Liste des cleaners : \n";
     vector<AirCleaner*>::iterator it;
     for (it = lesCleaners.begin() ; it != lesCleaners.end(); ++it){
-        AirCleaner *ac = *it;
-        cout << *ac << endl;
+        cout << **it << endl;
     }
     cout << endl;
 }
