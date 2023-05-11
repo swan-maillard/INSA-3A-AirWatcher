@@ -30,7 +30,7 @@ class FileAccess {
     // Constructeur
     FileAccess();
 
-    vector<AirCleaner*> generateCleaners(string providers = "data/providers.csv", string cleaners = "data/cleaners.csv");
+    bool generateCleaners(vector<AirCleaner*> &lesCleaners, string providers = "data/providers.csv", string cleaners = "data/cleaners.csv");
 
     // Destructeur
     ~FileAccess();

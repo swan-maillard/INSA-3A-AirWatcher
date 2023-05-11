@@ -30,23 +30,20 @@ FileAccess::FileAccess() {
 
 }
 
-vector<AirCleaner*> FileAccess::generateCleaners(string providersFN, string cleanerFN){
-  cout << "on entre dans le dur\n";
+ bool FileAccess::generateCleaners(vector<AirCleaner*> &lesCleaners, string providersFN, string cleanerFN){
   ifstream providersFile;
   providersFile.open(providersFN);
   if (!providersFile){
     cout << "erreur lors de l'ouverture du fichier providers";
-    exit(-1);
+    return false;
   }
   ifstream cleanersFile;
   cleanersFile.open(cleanerFN);
   if (!cleanersFile){
     cout << "erreur lors de l'ouverture du fichier cleaner";
-    exit(-1);
+    return false;
   }
-  cout << "les fichiers sont cree correctement\n";
 
-  vector<AirCleaner*> lesCleaners(0);
   string provider, cleaner, temp, lat, lon, deb, fin;
   getline(cleanersFile, temp, ';');
   while (getline(providersFile, provider, ';'), !providersFile.eof()){
@@ -54,10 +51,9 @@ vector<AirCleaner*> FileAccess::generateCleaners(string providersFN, string clea
     getline(cleanersFile, lat, ';');
     getline(cleanersFile, lon, ';');
     AirCleaner* ac = new AirCleaner(lat, lon, provider.at(provider.length()-1) - 48, cleaner.at(7) - 48);
-    //cout << *ac << endl;
     lesCleaners.push_back(ac);
     while (temp == cleaner){
-
+      cout << "ICI" << endl;
       getline(cleanersFile, deb, ';');
       getline(cleanersFile, fin, ';');
       ac->addWorkingHours(deb, fin);
@@ -68,12 +64,13 @@ vector<AirCleaner*> FileAccess::generateCleaners(string providersFN, string clea
       }
     }
   }
+  /*
   cout << "la liste des cleaners : \n";
   for (int i = 0; i < 2 ; i++){
     AirCleaner* c = lesCleaners.at(i);
     cout << *c;
-  }
-  return lesCleaners;
+  }*/
+  return true;
 }
 
 FileAccess::~FileAccess() {

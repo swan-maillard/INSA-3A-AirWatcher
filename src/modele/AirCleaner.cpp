@@ -25,9 +25,9 @@ using namespace std;
 
 bool AirCleaner::addWorkingHours(string &start, string &end)
 {
-    Date startdate(start);
-    Date enddate(end);
-    //workingHours.insert(make_pair(startdate, enddate));
+    Date *startdate = new Date(start);
+    Date *enddate = new Date(end);
+    workingHours.insert(make_pair(startdate, enddate));
     return true;
 }
 
@@ -36,8 +36,8 @@ AirCleaner::AirCleaner(string &aLatitude, string &aLongitude, int aProviderId, i
   #ifdef MAP
       cout << "Construction de <AirCleaner>" << endl;
   #endif
-    providerId = aProviderId;
-    cleanerId = aCleanerId;
+  providerId = aProviderId;
+  cleanerId = aCleanerId;
 }
 
 AirCleaner::~AirCleaner() 
@@ -49,7 +49,10 @@ AirCleaner::~AirCleaner()
 
 ostream & operator << (ostream& os, const AirCleaner& AC)
 {
-    os << "Le AirCleaner :\nID : " << AC.cleanerId << "\tproviderID : " << AC.providerId << "\n A " << AC.position;
-    ///TODO ajouter les heures de travail
+    os << "CleanerID : " << AC.cleanerId << "\tproviderID : " << AC.providerId << "\nA la position : " << AC.position;
+    map<Date*, Date*>::const_iterator it;
+    for (it = AC.workingHours.cbegin() ; it != AC.workingHours.cend() ; ++it){
+        os << "\nDe : " << *(it->first) << " -> " << *(it->second);
+    }
     return os;
 } 

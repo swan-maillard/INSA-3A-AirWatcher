@@ -59,6 +59,6 @@ int Date::strToInt(string s){
 
 ostream & operator << (ostream& os, const Date& uneDate)
 {
-    os << "La date : " << uneDate.year << "-" << uneDate.month << "-" << uneDate.day << (uneDate.hour < 10 ? " 0" : " " )<< uneDate.hour << (uneDate.min < 10 ? "h0" : "h" ) << uneDate.min << (uneDate.sec < 10 ? "m0" : "m" ) << uneDate.sec;
+    os << uneDate.year << "-" << uneDate.month << "-" << uneDate.day << (uneDate.hour < 10 ? " 0" : " " )<< uneDate.hour << (uneDate.min < 10 ? "h0" : "h" ) << uneDate.min << (uneDate.sec < 10 ? "m0" : "m" ) << uneDate.sec;
     return os;
 } 

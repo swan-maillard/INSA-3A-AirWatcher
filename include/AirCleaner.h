@@ -38,7 +38,7 @@ class AirCleaner {
     Position position;
     int providerId;
     int cleanerId;
-    map<Date, Date> workingHours;
+    map<Date*, Date*> workingHours;
 
 //----------------------------------------------------- Attributs protégés
 

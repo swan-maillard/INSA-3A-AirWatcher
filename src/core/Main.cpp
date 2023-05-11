@@ -3,8 +3,23 @@ using namespace std;
 #include <string>
 #include <limits>
 #include <vector>
+#include "../../include/AirCleaner.h"
+#include "../../include/FileAccess.h"
+
+void testerGenerationCleaner() {
+    FileAccess fa;
+    vector<AirCleaner*> lesCleaners(0);
+    fa.generateCleaners(lesCleaners);
+    cout << "Liste des cleaners : \n";
+    vector<AirCleaner*>::iterator it;
+    for (it = lesCleaners.begin() ; it != lesCleaners.end(); ++it){
+        AirCleaner *ac = *it;
+        cout << *ac << endl;
+    }
+}
 
 int main (int argc, char * argv[]) {
+    testerGenerationCleaner();
     int choice;
     cout << "Bienvenue sur AirWatcher." << endl;
 

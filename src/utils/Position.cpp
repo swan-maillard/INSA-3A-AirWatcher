@@ -85,6 +85,6 @@ double Position::strToDouble(string str){
 
 ostream & operator << (ostream& os, const Position& unePos)
 {
-    os << "La position : latitude :" << unePos.latitude << "; longitude : " << unePos.longitude;
+    os << "latitude :" << unePos.latitude << "; longitude : " << unePos.longitude;
     return os;
 } 
