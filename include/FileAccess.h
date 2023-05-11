@@ -31,12 +31,16 @@ class FileAccess {
     FileAccess();
 
     bool generateCleaners(vector<AirCleaner*> &lesCleaners, string providers = "data/providers.csv", string cleaners = "data/cleaners.csv");
+    bool generateSensors(vector<Sensor*> &lesSensors);
 
     // Destructeur
     ~FileAccess();
 
 //----------------------------------------------------------------- PRIVE
   protected:
+
+
+    bool mapUsers(map<string, string> &users);
 //----------------------------------------------------- Attributs protégés
 
 

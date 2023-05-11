@@ -19,7 +19,6 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "../../include/FileAccess.h"
 
-
 //----------------------------------------------------------------- PUBLIC
 
 FileAccess::FileAccess() {
@@ -64,18 +63,40 @@ FileAccess::FileAccess() {
       }
     }
   }
-  /*
-  cout << "la liste des cleaners : \n";
-  for (int i = 0; i < 2 ; i++){
-    AirCleaner* c = lesCleaners.at(i);
-    cout << *c;
-  }*/
   return true;
 }
 
-FileAccess::~FileAccess() {
-  #ifdef MAP
-      cout << "Destruction de <FileAccess>" << endl;
-  #endif
+bool FileAccess::generateSensors(vector<Sensor *> &lesSensors)
+{
+  map<string, string> users;
+  if (mapUsers(users) == false){
+    return false;
+  }
+
+  return false;
 }
 
+FileAccess::~FileAccess()
+{
+#ifdef MAP
+  cout << "Destruction de <FileAccess>" << endl;
+#endif
+}
+
+bool FileAccess::mapUsers(map<string, string> &users)
+{
+  ifstream userFile;
+  if (!userFile){
+    cout << "erreur lors de l'ouverture du fichier cleaner";
+    return false;
+  }
+  string userID, sensorID, temp;
+  userFile.open("data/users.csv");
+  while (!userFile.eof()){
+    getline(userFile, userID, ';');
+    getline(userFile, sensorID, ';');
+    getline(userFile, temp);
+    users.insert(make_pair(sensorID, userID));
+  }
+  return true;
+}
