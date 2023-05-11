@@ -63,6 +63,8 @@ FileAccess::FileAccess() {
       }
     }
   }
+  cleanersFile.close();
+  providersFile.close();
   return true;
 }
 
@@ -71,6 +73,37 @@ bool FileAccess::generateSensors(vector<Sensor *> &lesSensors)
   map<string, string> users;
   if (mapUsers(users) == false){
     return false;
+  }
+  /*
+  map<string, string>::iterator it;
+  for (it = users.begin(); it != users.end() ; ++it){
+    cout << it->first << " : " << it->second << endl;
+  }*/
+
+  ifstream sensorFile;
+  sensorFile.open("data/sensors.csv");
+  if (!sensorFile){
+    cout << "erreur lors de l'ouverture du fichier sensor";
+    return false;
+  }
+  int userID = 0, sensorID = 0;
+  string sid, lat, lon, uid;
+  while (getline(sensorFile, sid, ';'), !sensorFile.eof()){
+    getline(sensorFile, lat, ';');
+    getline(sensorFile, lon, ';');
+    
+    map<string, string>::iterator it;
+    it = users.find(sid);
+    if (it == users.end()){
+      userID = -1; //il s'agit du gouvernement
+    } else {
+      uid = it->second;
+      userID = strToInt(uid.substr(4, uid.length() - 4));
+    }
+    sensorID = strToInt(sid.substr(6, sid.length() - 6));
+    Sensor *sens = new Sensor(lat,lon,sensorID++, userID);
+    lesSensors.push_back(sens);
+    getline(sensorFile, sid);
   }
 
   return false;
@@ -86,17 +119,28 @@ FileAccess::~FileAccess()
 bool FileAccess::mapUsers(map<string, string> &users)
 {
   ifstream userFile;
+  userFile.open("data/users.csv");
   if (!userFile){
     cout << "erreur lors de l'ouverture du fichier cleaner";
     return false;
   }
   string userID, sensorID, temp;
-  userFile.open("data/users.csv");
   while (!userFile.eof()){
     getline(userFile, userID, ';');
     getline(userFile, sensorID, ';');
     getline(userFile, temp);
     users.insert(make_pair(sensorID, userID));
   }
+  userFile.close();
   return true;
+}
+
+int FileAccess::strToInt(string s){
+  int nb = 0;
+  long unsigned int i;
+  for (i = 0 ; i < s.length() ; i++){
+    nb*=10;
+    nb += (s.at(i) - 48);
+  }
+  return nb;
 }

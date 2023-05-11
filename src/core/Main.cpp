@@ -4,6 +4,7 @@ using namespace std;
 #include <limits>
 #include <vector>
 #include "../../include/AirCleaner.h"
+#include "../../include/Sensor.h"
 #include "../../include/FileAccess.h"
 
 void testerGenerationCleaner() {
@@ -18,8 +19,20 @@ void testerGenerationCleaner() {
     cout << endl;
 }
 
+void testerGenerationSensors() {
+    FileAccess fa;
+    vector<Sensor*> lesSensors(0);
+    fa.generateSensors(lesSensors);
+    vector<Sensor*>::iterator it;
+    for (it = lesSensors.begin() ; it != lesSensors.end(); ++it){
+        cout << **it << endl;
+    }
+    cout << endl;
+}
+
 int main (int argc, char * argv[]) {
-    testerGenerationCleaner();
+    //testerGenerationCleaner();
+    testerGenerationSensors();
     int choice;
     cout << "Bienvenue sur AirWatcher." << endl;
 
@@ -40,7 +53,7 @@ int main (int argc, char * argv[]) {
                 cout << "-- SCAN --" << endl;
                 break;
             case 2:
-                cout << "À bientôt sur AitWatcher !" << endl;
+                cout << "À bientôt sur AirWatcher !" << endl;
                 break;
             default:
                 cout << "Veuillez choisir une option valide (nombre compris entre 1 et 2)" << endl;

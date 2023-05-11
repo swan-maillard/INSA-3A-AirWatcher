@@ -39,7 +39,7 @@ class FileAccess {
 //----------------------------------------------------------------- PRIVE
   protected:
 
-
+    int strToInt(string s);
     bool mapUsers(map<string, string> &users);
 //----------------------------------------------------- Attributs protégés
 

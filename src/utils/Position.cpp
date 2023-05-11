@@ -69,7 +69,7 @@ Position::~Position() {
 double Position::strToDouble(string str){
     double nb = 0;
     long unsigned int i = 0, p = 10;
-    while (str.at(i) != '.'){
+    while (i < str.length() && str.at(i) != '.'){
         nb *= 10;
         nb += str.at(i) - 48;
         i++;

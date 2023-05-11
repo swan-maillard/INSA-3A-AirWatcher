@@ -15,6 +15,13 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <string>
+#include <vector>
+#include <map>
+
+#include "Position.h"
+#include "Date.h"
+
+typedef map<Date*, double> DicoVal;
 
 class Sensor {
 
@@ -23,15 +30,22 @@ class Sensor {
 //----------------------------------------------------- Méthodes publiques
 
     // Constructeur
-    Sensor();
+    Sensor(string &lat, string &lon, int aSensorID, int aUserID);
 
     // Destructeur
     ~Sensor();
 
+    friend std::ostream& operator << (std::ostream& os, const Sensor &S);
+
 //----------------------------------------------------------------- PRIVE
   protected:
-//----------------------------------------------------- Attributs protégés
-
+    Position pos;
+    int sensorID;
+    int userID;
+    DicoVal ValO3;
+    DicoVal ValNO2;
+    DicoVal ValSO2;
+    DicoVal ValPH10;
 
 };
 
