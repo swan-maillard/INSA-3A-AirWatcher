@@ -16,6 +16,7 @@ void testerGenerationCleaner() {
         AirCleaner *ac = *it;
         cout << *ac << endl;
     }
+    cout << endl;
 }
 
 int main (int argc, char * argv[]) {

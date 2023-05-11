@@ -53,10 +53,10 @@ FileAccess::FileAccess() {
     AirCleaner* ac = new AirCleaner(lat, lon, provider.at(provider.length()-1) - 48, cleaner.at(7) - 48);
     lesCleaners.push_back(ac);
     while (temp == cleaner){
-      cout << "ICI" << endl;
       getline(cleanersFile, deb, ';');
       getline(cleanersFile, fin, ';');
       ac->addWorkingHours(deb, fin);
+      getline(cleanersFile, temp, '\n');
       getline(cleanersFile, temp, ';');
       if (cleaner == temp) {
         getline(cleanersFile, lat, ';');
