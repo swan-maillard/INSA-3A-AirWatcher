@@ -27,6 +27,8 @@ class AirCleaner {
     bool addWorkingHours(string &start, string &end);
     // Constructeur
     AirCleaner(string &aLatitude, string &aLongitude, int providerId, int cleanerId);
+    ///TODO Faire un constructeur de copie
+
 
     // Destructeur
     ~AirCleaner();

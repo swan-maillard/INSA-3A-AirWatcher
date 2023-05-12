@@ -6,6 +6,7 @@ using namespace std;
 #include "../../include/AirCleaner.h"
 #include "../../include/Sensor.h"
 #include "../../include/FileAccess.h"
+#include "../../include/Date.h"
 
 void testerGenerationCleaner() {
     FileAccess fa;
@@ -30,9 +31,18 @@ void testerGenerationSensors() {
     cout << endl;
 }
 
+void testerDate() {
+    Date d1("2000:12:11 11:03:45");
+    Date d2("2000:12:11 11:03:45");
+    Date d3("2003:12:11 11:03:45");
+    Date d4("2000:12:11 11:03:44");
+    cout << (d1 == d2) << " " << (d1 < d3) << " " << (d1 < d4) << endl;
+}
+
 int main (int argc, char * argv[]) {
     //testerGenerationCleaner();
-    testerGenerationSensors();
+    //testerGenerationSensors();
+    //testerDate();
     int choice;
     cout << "Bienvenue sur AirWatcher." << endl;
 

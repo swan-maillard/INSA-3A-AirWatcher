@@ -31,6 +31,7 @@ class Sensor {
 
     // Constructeur
     Sensor(string &lat, string &lon, int aSensorID, int aUserID);
+    //TODO Faire un constructeur de copie
 
     // Destructeur
     ~Sensor();

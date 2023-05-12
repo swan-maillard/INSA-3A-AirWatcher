@@ -28,6 +28,8 @@ class Date {
     // Destructeur
     ~Date();
 
+    bool operator < (const Date & uneDate) const;
+    bool operator == (const Date & uneDate) const;
     friend std::ostream& operator << (std::ostream& os, const Date & uneDate);
 
 //----------------------------------------------------------------- PRIVE

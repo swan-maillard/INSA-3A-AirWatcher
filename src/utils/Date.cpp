@@ -47,14 +47,50 @@ Date::~Date() {
   #endif
 }
 
-int Date::strToInt(string s){
-  int nb = 0;
-  long unsigned int i;
-  for (i = 0 ; i < s.length() ; i++){
-    nb*=10;
-    nb += (s.at(i) - 48);
+bool Date::operator < (const Date &uneDate) const
+{
+  if (this->year < uneDate.year){
+    return false;
+  } else {
+    if (this->month < uneDate.month){
+      return false;
+    } else {
+      if (this->day < uneDate.day){
+        return false;
+      } else {
+        if (this->hour < uneDate.hour){
+          return false;
+        } else {
+          if (this->min < uneDate.min){
+            return false;
+          } else {
+            if (this->sec < uneDate.sec){
+              return false;
+            } else {
+              return true;
+            }
+          }
+        }
+      }
+    }
   }
-  return nb;
+}
+
+bool Date::operator == (const Date &uneDate) const
+{
+  return (this->sec == uneDate.sec && this->min == uneDate.min && this->hour == uneDate.hour && this->day == uneDate.day && this->month == uneDate.month && this->year == uneDate.year);
+}
+
+int Date::strToInt(string s)
+{
+      int nb = 0;
+      long unsigned int i;
+      for (i = 0; i < s.length(); i++)
+      {
+          nb *= 10;
+          nb += (s.at(i) - 48);
+      }
+      return nb;
 }
 
 ostream & operator << (ostream& os, const Date& uneDate)
