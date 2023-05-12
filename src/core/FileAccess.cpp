@@ -2,7 +2,7 @@
     FileAccess
                              -------------------
     début                : 13/12/2022
-    copyright            : (C) 2022 par WARIN Hugo, BIAUD, Alexandre, MAILLARD Swan, GIRAUDON Clément
+    copyright            : (C) 2022 par WARIN Hugo, BIAUD Alexandre, MAILLARD Swan, GIRAUDON Clément
     e-mail               : hugo.warin@insa-lyon.fr
 *************************************************************************/
 
@@ -50,7 +50,6 @@ FileAccess::FileAccess() {
     getline(cleanersFile, lat, ';');
     getline(cleanersFile, lon, ';');
     AirCleaner* ac = new AirCleaner(lat, lon, provider.at(provider.length()-1) - 48, cleaner.at(7) - 48);
-    lesCleaners.push_back(ac);
     while (temp == cleaner){
       getline(cleanersFile, deb, ';');
       getline(cleanersFile, fin, ';');
@@ -62,6 +61,7 @@ FileAccess::FileAccess() {
         getline(cleanersFile, lon, ';');
       }
     }
+    lesCleaners.push_back(ac);
   }
   cleanersFile.close();
   providersFile.close();
@@ -105,8 +105,10 @@ bool FileAccess::generateSensors(vector<Sensor *> &lesSensors)
     lesSensors.push_back(sens);
     getline(sensorFile, sid);
   }
+  sensorFile.close();
 
-  return false;
+
+  return true;
 }
 
 FileAccess::~FileAccess()

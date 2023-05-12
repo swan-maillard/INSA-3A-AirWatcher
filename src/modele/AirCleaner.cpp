@@ -19,14 +19,15 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "../../include/AirCleaner.h"
+#include "AirCleaner.h"
 
 
 //----------------------------------------------------------------- PUBLIC
 
 bool AirCleaner::addWorkingHours(string &start, string &end)
 {
-    Date *startdate = new Date(start);
-    Date *enddate = new Date(end);
+    Date startdate(start);
+    Date enddate(end);
     workingHours.insert(make_pair(startdate, enddate));
     return true;
 }
@@ -40,7 +41,12 @@ AirCleaner::AirCleaner(string &aLatitude, string &aLongitude, int aProviderId, i
   cleanerId = aCleanerId;
 }
 
-AirCleaner::~AirCleaner() 
+Position AirCleaner::getPosition()
+{
+  return position;
+}
+
+AirCleaner::~AirCleaner()
 {
   #ifdef MAP
       cout << "Destruction de <AirCleaner>" << endl;
@@ -50,9 +56,9 @@ AirCleaner::~AirCleaner()
 ostream & operator << (ostream& os, const AirCleaner& AC)
 {
     os << "CleanerID : " << AC.cleanerId << "\tproviderID : " << AC.providerId << "\nA la position : " << AC.position;
-    map<Date*, Date*>::const_iterator it;
+    map<Date, Date>::const_iterator it;
     for (it = AC.workingHours.cbegin() ; it != AC.workingHours.cend() ; ++it){
-        os << "\nDe : " << *(it->first) << " -> " << *(it->second);
+        os << "\nDe : " << (it->first) << " -> " << (it->second);
     }
     return os;
 } 

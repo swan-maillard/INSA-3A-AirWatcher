@@ -21,7 +21,7 @@ using namespace std;
 #include "Position.h"
 #include "Date.h"
 
-typedef map<Date*, double> DicoVal;
+typedef map<Date, double> DicoMesure;
 
 class Sensor {
 
@@ -36,6 +36,13 @@ class Sensor {
     // Destructeur
     ~Sensor();
 
+    void addNO2Val(string &date, string &val);
+    void addSO2Val(string &date, string &val);
+    void addPH10Val(string &date, string &val);
+    void addO3Val(string &date, string &val);
+
+    Position getPosition();
+
     friend std::ostream& operator << (std::ostream& os, const Sensor &S);
 
 //----------------------------------------------------------------- PRIVE
@@ -43,10 +50,12 @@ class Sensor {
     Position pos;
     int sensorID;
     int userID;
-    DicoVal ValO3;
-    DicoVal ValNO2;
-    DicoVal ValSO2;
-    DicoVal ValPH10;
+    DicoMesure ValO3;
+    DicoMesure ValNO2;
+    DicoMesure ValSO2;
+    DicoMesure ValPH10;
+
+    int strToInt(string s);
 
 };
 

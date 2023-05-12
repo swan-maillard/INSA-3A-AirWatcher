@@ -30,17 +30,52 @@ Sensor::Sensor(string &lat, string &lon, int aSensorID, int aUserID) : pos(Posit
 Sensor::~Sensor()
 {
 #ifdef MAP
-      cout << "Destruction de <Sensor>" << endl;
-  #endif
+    cout << "Destruction de <Sensor>" << endl;
+#endif
 }
 
-ostream & operator << (ostream& os, const Sensor &S)
+Position Sensor::getPosition()
+{
+    return pos;
+}
+
+void Sensor::addO3Val(string &date, string &val)
+{
+    Date d(date);
+    ValO3.insert(make_pair(d, strToInt(val)));
+}
+
+void Sensor::addNO2Val(string &date, string &val)
+{
+    Date d(date);
+    ValNO2.insert(make_pair(d, strToInt(val)));
+}
+
+void Sensor::addSO2Val(string &date, string &val)
+{
+    Date d(date);
+    ValSO2.insert(make_pair(d, strToInt(val)));
+}
+
+void Sensor::addPH10Val(string &date, string &val)
+{
+    Date d(date);
+    ValPH10.insert(make_pair(d, strToInt(val)));
+}
+
+ostream &operator<<(ostream &os, const Sensor &S)
 {
     os << "SensorID : " << S.sensorID << "\tUserID : " << S.userID << "\n  A la position : " << S.pos;
-    /*
-    map<Date*, Date*>::const_iterator it;
-    for (it = AC.workingHours.cbegin() ; it != AC.workingHours.cend() ; ++it){
-        os << "\nDe : " << *(it->first) << " -> " << *(it->second);
-    }*/
+    ///TODO afficher les valeurs des differents relevés
     return os;
-} 
+}
+
+int Sensor::strToInt(string s){
+  int nb = 0;
+  long unsigned int i;
+  for (i = 0 ; i < s.length() ; i++){
+    nb*=10;
+    nb += (s.at(i) - 48);
+  }
+  return nb;
+}
