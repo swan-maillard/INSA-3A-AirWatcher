@@ -121,7 +121,7 @@ bool FileAccess::generateSensors(vector<Sensor*> &lesSensors)
     getline(measureFile, val, ';');
     sensorID = strToInt(sid.substr(6, sid.length() - 6));
     lesSensors.at(sensorID)->addValue(date, val, type);
-    
+
     getline(measureFile, date);
   }
 

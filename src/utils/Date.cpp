@@ -50,24 +50,24 @@ Date::~Date() {
 bool Date::operator < (const Date &uneDate) const
 {
   if (this->year < uneDate.year){
-    return false;
+    return true;
   } else {
     if (this->month < uneDate.month){
-      return false;
+      return true;
     } else {
       if (this->day < uneDate.day){
-        return false;
+        return true;
       } else {
         if (this->hour < uneDate.hour){
-          return false;
+          return true;
         } else {
           if (this->min < uneDate.min){
-            return false;
+            return true;
           } else {
             if (this->sec < uneDate.sec){
-              return false;
-            } else {
               return true;
+            } else {
+              return false;
             }
           }
         }

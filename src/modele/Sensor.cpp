@@ -64,8 +64,7 @@ ostream &operator<<(ostream &os, const Sensor &S)
     i3 = S.ValSO2.cbegin();
     i4 = S.ValPM10.cbegin();
     while (i1 != S.ValO3.cend()){
-        os << "\nA la date ";
-
+        os << "\nA la date " << i1->first << "\t03 : " << i1->second << "\tNO2 : " << i2->second << "\tSO2 : " << i3->second << "\tPM10 : " << i4->second;
         ++i1; ++i2; ++i3; ++i4;
     }
 

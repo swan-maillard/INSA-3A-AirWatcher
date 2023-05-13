@@ -9,6 +9,7 @@
         "limits": "cpp",
         "string": "cpp",
         "cmath": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "type_traits": "cpp"
     }
 }
