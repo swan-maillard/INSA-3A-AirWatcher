@@ -36,10 +36,7 @@ class Sensor {
     // Destructeur
     ~Sensor();
 
-    void addNO2Val(string &date, string &val);
-    void addSO2Val(string &date, string &val);
-    void addPH10Val(string &date, string &val);
-    void addO3Val(string &date, string &val);
+    void addValue(string &date, string &val, string &type);
 
     Position getPosition();
 
@@ -53,10 +50,10 @@ class Sensor {
     DicoMesure ValO3;
     DicoMesure ValNO2;
     DicoMesure ValSO2;
-    DicoMesure ValPH10;
+    DicoMesure ValPM10;
 
-    int strToInt(string s);
-
+    int strToInt(string &s);
+    double strToDouble(string &str);
 };
 
 #endif // SENSOR_H

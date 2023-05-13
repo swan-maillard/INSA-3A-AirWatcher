@@ -68,7 +68,7 @@ FileAccess::FileAccess() {
   return true;
 }
 
-bool FileAccess::generateSensors(vector<Sensor *> &lesSensors)
+bool FileAccess::generateSensors(vector<Sensor*> &lesSensors)
 {
   map<string, string> users;
   if (mapUsers(users) == false){
@@ -107,6 +107,23 @@ bool FileAccess::generateSensors(vector<Sensor *> &lesSensors)
   }
   sensorFile.close();
 
+  ifstream measureFile;
+  measureFile.open("data/measurements.csv");
+  if (!measureFile){
+    cerr << "erreur lors de l'ouverture du fichier measurements";
+    return false;
+  }
+
+  string date, type, val;
+  while (getline(measureFile, date, ';'), !measureFile.eof()){
+    getline(measureFile, sid, ';');
+    getline(measureFile, type, ';');
+    getline(measureFile, val, ';');
+    sensorID = strToInt(sid.substr(6, sid.length() - 6));
+    lesSensors.at(sensorID)->addValue(date, val, type);
+    
+    getline(measureFile, date);
+  }
 
   return true;
 }
