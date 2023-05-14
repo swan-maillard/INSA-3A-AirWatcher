@@ -52,11 +52,8 @@ bool Date::operator < (const Date &uneDate) const
   if (this->year < uneDate.year){
     return true;
   } else {
-    if (this->month < uneDate.month){
+    if (this->month * 35 + this->day < uneDate.month * 35 + uneDate.day){
       return true;
-    } else {
-      if (this->day < uneDate.day){
-        return true;
       } else {
         if (this->hour < uneDate.hour){
           return true;
@@ -72,7 +69,6 @@ bool Date::operator < (const Date &uneDate) const
           }
         }
       }
-    }
   }
 }
 
