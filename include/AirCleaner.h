@@ -24,9 +24,9 @@ class AirCleaner {
   public:
 //----------------------------------------------------- Méthodes publiques
 
-    bool addWorkingHours(string &start, string &end);
+    bool addWorkingHours(const string &start, const string &end);
     // Constructeur
-    AirCleaner(string &aLatitude, string &aLongitude, int providerId, int cleanerId);
+    AirCleaner(const string &aLatitude, const string &aLongitude, const int providerId, const int cleanerId);
 
     Position getPosition();
     // Destructeur

@@ -19,9 +19,8 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "../../include/Sensor.h"
-#include "Sensor.h"
 
-Sensor::Sensor(string &lat, string &lon, int aSensorID, int aUserID) : pos(Position(lat,lon)), sensorID(aSensorID), userID(aUserID)
+Sensor::Sensor(const string &lat, const string &lon, const int aSensorID, const int aUserID) : pos(Position(lat,lon)), sensorID(aSensorID), userID(aUserID)
 {
 #ifdef MAP
     cout << "Constructeur de <Sensor>" << endl;
@@ -35,12 +34,12 @@ Sensor::~Sensor()
 #endif
 }
 
-Position Sensor::getPosition()
+Position Sensor::getPosition() const
 {
     return pos;
 }
 
-void Sensor::addValue(string &date, string &val, string &type)
+void Sensor::addValue(const string &date, const string &val,const string &type)
 {
     Date d(date);
     double valeur = strToDouble(val);
@@ -71,7 +70,8 @@ ostream &operator<<(ostream &os, const Sensor &S)
     return os;
 }
 
-int Sensor::strToInt(string &s){
+int Sensor::strToInt(const string &s) const 
+{
   int nb = 0;
   long unsigned int i;
   for (i = 0 ; i < s.length() ; i++){
@@ -81,7 +81,8 @@ int Sensor::strToInt(string &s){
   return nb;
 }
 
-double Sensor::strToDouble(string &str){
+double Sensor::strToDouble(const string &str) const 
+{
     double nb = 0;
     long unsigned int i = 0, p = 10;
     while (i < str.length() && str.at(i) != '.'){

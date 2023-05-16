@@ -30,15 +30,15 @@ class Sensor {
 //----------------------------------------------------- Méthodes publiques
 
     // Constructeur
-    Sensor(string &lat, string &lon, int aSensorID, int aUserID);
+    Sensor(const string &lat, const string &lon, const int aSensorID, const int aUserID);
     //TODO Faire un constructeur de copie
 
     // Destructeur
     ~Sensor();
 
-    void addValue(string &date, string &val, string &type);
+    void addValue(const string &date, const string &val, const string &type);
 
-    Position getPosition();
+    Position getPosition() const;
 
     friend std::ostream& operator << (std::ostream& os, const Sensor &S);
 
@@ -52,8 +52,8 @@ class Sensor {
     DicoMesure ValSO2;
     DicoMesure ValPM10;
 
-    int strToInt(string &s);
-    double strToDouble(string &str);
+    int strToInt(const string &s) const;
+    double strToDouble(const string &str) const;
 };
 
 #endif // SENSOR_H

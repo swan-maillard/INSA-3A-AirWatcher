@@ -7,42 +7,10 @@ using namespace std;
 #include "../../include/Sensor.h"
 #include "../../include/FileAccess.h"
 #include "../../include/Date.h"
-
-void testerGenerationCleaner() {
-    FileAccess fa;
-    vector<AirCleaner*> lesCleaners(0);
-    fa.generateCleaners(lesCleaners);
-    cout << "Liste des cleaners : \n";
-    vector<AirCleaner*>::iterator it;
-    for (it = lesCleaners.begin() ; it != lesCleaners.end(); ++it){
-        cout << **it << endl;
-    }
-    cout << endl;
-}
-
-void testerGenerationSensors() {
-    FileAccess fa;
-    vector<Sensor*> lesSensors(0);
-    fa.generateSensors(lesSensors);
-    vector<Sensor*>::iterator it;
-    for (it = lesSensors.begin() ; it != lesSensors.end(); ++it){
-        cout << **it << endl;
-    }
-    cout << endl;
-}
-
-void testerDate() {
-    Date d1("2000:12:11 11:03:45");
-    Date d2("2000:12:11 11:03:45");
-    Date d3("2003:12:11 11:03:45");
-    Date d4("2000:12:11 11:03:44");
-    cout << (d1 == d2) << " " << (d1 < d3) << " " << (d1 < d4) << endl;
-}
+#include "../../include/System.h"
 
 int main (int argc, char * argv[]) {
-    //testerGenerationCleaner();
-    //testerGenerationSensors();
-    //testerDate();
+    System sys;
     int choice;
     cout << "Bienvenue sur AirWatcher." << endl;
 
@@ -74,5 +42,5 @@ int main (int argc, char * argv[]) {
     } while (choice != 2);
 
 
-    return EXIT_SUCCESS;
+    return 0;
 }

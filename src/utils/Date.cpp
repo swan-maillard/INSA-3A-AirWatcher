@@ -24,7 +24,7 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 Date::Date(string uneDate) {
-  #ifdef MAP
+  #ifdef MAPMAP
       cout << "Construction de <Date>" << endl;
   #endif
   string temp = uneDate.substr(0,4);
@@ -42,7 +42,7 @@ Date::Date(string uneDate) {
 }
 
 Date::~Date() {
-  #ifdef MAP
+  #ifdef MAPMAP
       cout << "Destruction de <Date>" << endl;
   #endif
 }

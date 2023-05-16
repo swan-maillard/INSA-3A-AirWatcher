@@ -2,7 +2,7 @@
     AirCleaner
                              -------------------
     début                : 13/12/2022
-    copyright            : (C) 2022 par WARIN Hugo, BIAUD, Alexandre, MAILLARD Swan, GIRAUDON Clément
+    copyright            : (C) 2022 par WARIN Hugo, BIAUD Alexandre, MAILLARD Swan, GIRAUDON Clément
     e-mail               : hugo.warin@insa-lyon.fr
 *************************************************************************/
 
@@ -19,12 +19,11 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "../../include/AirCleaner.h"
-#include "AirCleaner.h"
 
 
 //----------------------------------------------------------------- PUBLIC
 
-bool AirCleaner::addWorkingHours(string &start, string &end)
+bool AirCleaner::addWorkingHours(const string &start, const string &end)
 {
     Date startdate(start);
     Date enddate(end);
@@ -32,7 +31,7 @@ bool AirCleaner::addWorkingHours(string &start, string &end)
     return true;
 }
 
-AirCleaner::AirCleaner(string &aLatitude, string &aLongitude, int aProviderId, int aCleanerId) : position(Position(aLatitude, aLongitude))
+AirCleaner::AirCleaner(const string &aLatitude, const string &aLongitude, const int aProviderId, const int aCleanerId) : position(Position(aLatitude, aLongitude))
 {
   #ifdef MAP
       cout << "Construction de <AirCleaner>" << endl;

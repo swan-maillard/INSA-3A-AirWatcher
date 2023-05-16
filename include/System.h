@@ -33,21 +33,21 @@ class System {
     // Destructeur
     ~System();
 
-    vector<Sensor> listSensors() const;
+    void listSensors() const;
 
-    Sensor infoSensor(const int & id) const;
+    void infoSensor(const int id) const;
 
-    vector<AirCleaner> listAirCleaners() const;
+    void listAirCleaners() const;
 
 
 //----------------------------------------------------------------- PRIVE
   private:
-    vector<PrivateIndividuals> individuals;
 //----------------------------------------------------------------- PROTECTED
   protected:
     FileAccess factory;
-    vector<Sensor> sensors;
-    vector<AirCleaner> airCleaners;
+    vector<Sensor*> sensors;
+    vector<AirCleaner*> airCleaners;
+    vector<PrivateIndividuals> individuals;
 //----------------------------------------------------- Attributs protégés
 
 
