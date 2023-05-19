@@ -19,6 +19,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "../../include/Date.h"
+#include "../../include/Util.h"
 
 
 //----------------------------------------------------------------- PUBLIC
@@ -77,20 +78,8 @@ bool Date::operator == (const Date &uneDate) const
   return (this->sec == uneDate.sec && this->min == uneDate.min && this->hour == uneDate.hour && this->day == uneDate.day && this->month == uneDate.month && this->year == uneDate.year);
 }
 
-int Date::strToInt(string s)
-{
-      int nb = 0;
-      long unsigned int i;
-      for (i = 0; i < s.length(); i++)
-      {
-          nb *= 10;
-          nb += (s.at(i) - 48);
-      }
-      return nb;
-}
-
 ostream & operator << (ostream& os, const Date& uneDate)
 {
-    os << uneDate.year << "-" << uneDate.month << "-" << uneDate.day << (uneDate.hour < 10 ? " 0" : " " )<< uneDate.hour << (uneDate.min < 10 ? "h0" : "h" ) << uneDate.min << (uneDate.sec < 10 ? "m0" : "m" ) << uneDate.sec;
+    os << (uneDate.day < 10 ? "0" : "" ) << uneDate.day << "-" << (uneDate.month < 10 ? "0" : "" ) << uneDate.month << "-" << uneDate.year << (uneDate.hour < 10 ? " 0" : " " )<< uneDate.hour << (uneDate.min < 10 ? "h0" : "h" ) << uneDate.min << (uneDate.sec < 10 ? "m0" : "m" ) << uneDate.sec;
     return os;
 } 

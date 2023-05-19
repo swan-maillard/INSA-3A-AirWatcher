@@ -26,8 +26,6 @@ FileAccess::FileAccess() {
   #ifdef MAP
       cout << "Construction de <FileAccess>" << endl;
   #endif
-
-
 }
 
  bool FileAccess::generateCleaners(vector<AirCleaner*> &lesCleaners, string providersFN, string cleanerFN){

@@ -63,10 +63,14 @@ void System::listAirCleaners() const
 
 void System::listSensors() const
 {
-    cout << "## Liste des Sensors ##\n";
-    vector<Sensor*>::const_iterator it;
+    /*vector<Sensor*>::const_iterator it;
+    vector<Sensor*> prive;
     for (it = sensors.cbegin() ; it != sensors.cend(); ++it){
-        cout << **it << endl;
-    }
+      Sensor s = **it;
+      if (s.userID < 0)
+        cout << "generateur du gov" << endl;
+      else 
+        cout << "generateur de particulier" << endl;
+    }*/
     cout << endl;
 }

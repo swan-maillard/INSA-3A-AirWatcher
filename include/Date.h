@@ -41,8 +41,6 @@ class Date {
     int hour;
     int min;
     int sec;
-
-    int strToInt(string s);
 //----------------------------------------------------- Attributs protégés
 
 

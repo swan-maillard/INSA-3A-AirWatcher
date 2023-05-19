@@ -38,7 +38,7 @@ class PrivateIndividuals {
   int points;
   int id;
   int isExcluded;
-  vector<Sensor> sensorsProvided;
+  vector<Sensor*> sensorsProvided;
 
 };
 
