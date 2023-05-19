@@ -7,8 +7,8 @@
 *************************************************************************/
 
 //---------- Interface de la classe <FileAccess> (fichier FileAccess.h) ----------------
-#if ! defined (LINKS_LIST_H)
-#define LINKS_LIST_H
+#if ! defined (FILEACCESS_H)
+#define FILEACCESS_H
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -38,12 +38,11 @@ class FileAccess {
 
 //----------------------------------------------------------------- PRIVE
   protected:
-
-    int strToInt(string s);
+  
     bool mapUsers(map<string, string> &users);
 //----------------------------------------------------- Attributs protégés
 
 
 };
 
-#endif // FILE_ACCESS_H
+#endif // FILEACCESS_H

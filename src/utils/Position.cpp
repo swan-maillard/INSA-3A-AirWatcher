@@ -20,6 +20,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "../../include/Position.h"
+#include "../../include/Util.h"
 
 
 //----------------------------------------------------------------- PUBLIC
@@ -64,23 +65,6 @@ Position::~Position() {
   #ifdef MAP
       cout << "Destruction de <Position> avec this = " << this << endl;
   #endif
-}
-
-double Position::strToDouble(string str){
-    double nb = 0;
-    long unsigned int i = 0, p = 10;
-    while (i < str.length() && str.at(i) != '.'){
-        nb *= 10;
-        nb += str.at(i) - 48;
-        i++;
-    }
-    i++;
-    while (i < str.length()){
-        nb += double(str.at(i) - 48 ) / p;
-        p*=10;
-        i++;
-    }
-    return nb;
 }
 
 ostream & operator << (ostream& os, const Position& unePos)

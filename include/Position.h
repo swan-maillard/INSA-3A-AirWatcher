@@ -30,8 +30,6 @@ class Position {
 
     double getLatitude();
 
-    double strToDouble(string str);
-
     void setLongitude(double longitude);
 
     void setLatitude(double latitude);

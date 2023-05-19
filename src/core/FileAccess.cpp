@@ -18,6 +18,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "../../include/FileAccess.h"
+#include "../../include/Util.h"
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -31,13 +32,13 @@ FileAccess::FileAccess() {
 
  bool FileAccess::generateCleaners(vector<AirCleaner*> &lesCleaners, string providersFN, string cleanerFN){
   ifstream providersFile;
-  providersFile.open(providersFN);
+  providersFile.open(providersFN.c_str());
   if (!providersFile){
     cout << "erreur lors de l'ouverture du fichier providers";
     return false;
   }
   ifstream cleanersFile;
-  cleanersFile.open(cleanerFN);
+  cleanersFile.open(cleanerFN.c_str());
   if (!cleanersFile){
     cout << "erreur lors de l'ouverture du fichier cleaner";
     return false;
@@ -152,14 +153,4 @@ bool FileAccess::mapUsers(map<string, string> &users)
   }
   userFile.close();
   return true;
-}
-
-int FileAccess::strToInt(string s){
-  int nb = 0;
-  long unsigned int i;
-  for (i = 0 ; i < s.length() ; i++){
-    nb*=10;
-    nb += (s.at(i) - 48);
-  }
-  return nb;
 }

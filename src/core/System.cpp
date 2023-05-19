@@ -16,6 +16,7 @@
 using namespace std;
 #include <iostream>
 #include <string>
+#include <vector>
 
 //------------------------------------------------------ Include personnel
 #include "../../include/System.h"
@@ -32,15 +33,14 @@ System::System() {
 }
 
 System::~System() {
-  /*
   vector<AirCleaner*>::iterator it;
   for (it = airCleaners.begin() ; it != airCleaners.end() ; ++it){
     delete *it;
   }
   vector<Sensor*>::iterator it2;
-  for (it2 = sensors.begin() ; it2 != sensors.end() ; ++it){
+  for (it2 = sensors.begin() ; it2 != sensors.end() ; ++it2){
     delete *it2;
-  }*/
+  }
   #ifdef MAP
       cout << "Destruction de <System>" << endl;
   #endif

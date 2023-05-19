@@ -51,9 +51,6 @@ class Sensor {
     DicoMesure ValNO2;
     DicoMesure ValSO2;
     DicoMesure ValPM10;
-
-    int strToInt(const string &s) const;
-    double strToDouble(const string &str) const;
 };
 
 #endif // SENSOR_H

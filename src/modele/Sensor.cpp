@@ -19,6 +19,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "../../include/Sensor.h"
+#include "../../include/Util.h"
 
 Sensor::Sensor(const string &lat, const string &lon, const int aSensorID, const int aUserID) : pos(Position(lat,lon)), sensorID(aSensorID), userID(aUserID)
 {
@@ -68,33 +69,4 @@ ostream &operator<<(ostream &os, const Sensor &S)
     }
 
     return os;
-}
-
-int Sensor::strToInt(const string &s) const 
-{
-  int nb = 0;
-  long unsigned int i;
-  for (i = 0 ; i < s.length() ; i++){
-    nb*=10;
-    nb += (s.at(i) - 48);
-  }
-  return nb;
-}
-
-double Sensor::strToDouble(const string &str) const 
-{
-    double nb = 0;
-    long unsigned int i = 0, p = 10;
-    while (i < str.length() && str.at(i) != '.'){
-        nb *= 10;
-        nb += str.at(i) - 48;
-        i++;
-    }
-    i++;
-    while (i < str.length()){
-        nb += double(str.at(i) - 48 ) / p;
-        p*=10;
-        i++;
-    }
-    return nb;
 }
