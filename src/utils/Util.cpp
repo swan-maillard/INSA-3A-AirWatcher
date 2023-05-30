@@ -18,8 +18,17 @@ double strToDouble(const std::string &str)
 {
     double nb = 0;
     long unsigned int i = 0, p = 10;
+    int neg = 1;
+    if(str.at(0) == '-')
+    {
+        i++;
+        neg = -1;
+    }
+        
     while (i < str.length() && str.at(i) != '.'){
         nb *= 10;
+        if(!(str.at(i) >= '0' && str.at(i) <= '9' || str.at(i) == '-'))
+            throw std::invalid_argument("Invalid argument");
         nb += str.at(i) - 48;
         i++;
     }
@@ -29,5 +38,5 @@ double strToDouble(const std::string &str)
         p*=10;
         i++;
     }
-    return nb;
+    return (neg*nb);
 }
