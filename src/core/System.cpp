@@ -71,10 +71,18 @@ void System::statsAirCleaner() const
   }
   cout << "Quel airCleaners voulez-vous tester ?\nVotre choix : ";
   cin >> choix;
-  while (choix > 2 && choix < 1){
-    cout << "Essayez a nouveau : ";
+  while (choix < 0 || choix > (int)airCleaners.size()-1){
+    cout << "Veuillez entrer une valeur entre 0 et " << airCleaners.size() - 1 << " :" << endl;
     cin >> choix;
   }
+  AirCleanerAnalysis airCleanerAnalysis;
+  AirCleaner airCleaner;
+  for (it = airCleaners.cbegin() ; it != airCleaners.cend(); ++it){
+    if((**it).getCleanerId() == choix)
+      airCleaner = **it;
+  }
+
+  int somme = airCleanerAnalysis.checkEfficiency(airCleaner, sensors);
 
 }
 

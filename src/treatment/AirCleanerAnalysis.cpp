@@ -35,3 +35,11 @@ AirCleanerAnalysis::~AirCleanerAnalysis() {
   #endif
 }
 
+int AirCleanerAnalysis::checkEfficiency(const AirCleaner & airCleaner, const vector<Sensor*> & sensors) const {
+  int somme(0);
+  //cout << airCleaner;
+
+  for(int )
+
+  return somme;
+}
