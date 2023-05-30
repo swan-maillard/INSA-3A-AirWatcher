@@ -20,6 +20,7 @@ using namespace std;
 #include "Sensor.h"
 #include "PrivateIndividuals.h"
 #include "FileAccess.h"
+#include "AirCleanerAnalysis.h"
 
 class System {
 
@@ -40,6 +41,7 @@ class System {
     void listAirCleaners() const;
 
     void scanSensors() const;
+    void statsAirCleaner() const;
 
 
 //----------------------------------------------------------------- PRIVE
@@ -50,6 +52,7 @@ class System {
     vector<Sensor*> sensors;
     vector<AirCleaner*> airCleaners;
     vector<PrivateIndividuals> individuals;
+    bool corruptFile;
 //----------------------------------------------------- Attributs protégés
 
 

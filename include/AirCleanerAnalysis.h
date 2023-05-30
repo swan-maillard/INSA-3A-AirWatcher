@@ -15,6 +15,9 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <string>
+#include <vector>
+#include "AirCleaner.h"
+#include "Sensor.h"
 
 class AirCleanerAnalysis {
 
@@ -27,6 +30,8 @@ class AirCleanerAnalysis {
 
     // Destructeur
     ~AirCleanerAnalysis();
+
+    int checkEfficiency(const AirCleaner & cleanerId, const vector<Sensor*> & sensors) const;
 
 //----------------------------------------------------------------- PRIVE
   protected:
