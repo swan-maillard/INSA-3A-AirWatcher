@@ -38,9 +38,6 @@ AirCleanerAnalysis::~AirCleanerAnalysis() {
 int AirCleanerAnalysis::checkEfficiency(const AirCleaner & airCleaner, const vector<Sensor*> & sensors) const {
   int somme(0);
 
-<<<<<<< Updated upstream
-  //for(int )
-=======
   bool efficace = true;
 
   int distance(100);
@@ -48,7 +45,6 @@ int AirCleanerAnalysis::checkEfficiency(const AirCleaner & airCleaner, const vec
   while(efficace){
     
   }
->>>>>>> Stashed changes
 
   return somme;
 }
