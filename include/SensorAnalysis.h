@@ -16,6 +16,9 @@
 using namespace std;
 #include <string>
 
+#include "Sensor.h"
+
+
 class SensorAnalysis {
 
 //----------------------------------------------------------------- PUBLIC
@@ -27,6 +30,8 @@ class SensorAnalysis {
 
     // Destructeur
     ~SensorAnalysis();
+
+    void scanSensors(const vector<Sensor*> & sensors);
 
 //----------------------------------------------------------------- PRIVE
   protected:

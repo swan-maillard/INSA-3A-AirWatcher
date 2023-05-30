@@ -26,9 +26,16 @@ class AirCleaner {
 
     bool addWorkingHours(const string &start, const string &end);
     // Constructeur
+    AirCleaner();
+
     AirCleaner(const string &aLatitude, const string &aLongitude, const int providerId, const int cleanerId);
 
     Position getPosition();
+
+    int getCleanerId();
+
+    map<Date, Date> getWorkingHours();
+
     // Destructeur
     ~AirCleaner();
 

@@ -18,6 +18,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "../../include/System.h"
+#include "../../include/SensorAnalysis.h"
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -93,23 +94,36 @@ void System::statsAirCleaner() const
   }
   cout << "Quel airCleaners voulez-vous tester ?\nVotre choix : ";
   cin >> choix;
-  while (choix > 2 && choix < 1)
-  {
-    cout << "Essayez a nouveau : ";
+  while (choix < 0 || choix > (int)airCleaners.size()-1){
+    cout << "Veuillez entrer une valeur entre 0 et " << airCleaners.size() - 1 << " :" << endl;
     cin >> choix;
   }
+  AirCleanerAnalysis airCleanerAnalysis;
+  AirCleaner airCleaner;
+  for (it = airCleaners.cbegin() ; it != airCleaners.cend(); ++it){
+    if((**it).getCleanerId() == choix)
+      airCleaner = **it;
+  }
+
+  int somme = airCleanerAnalysis.checkEfficiency(airCleaner, sensors);
+
 }
 
 void System::listSensors() const
 {
-  /*vector<Sensor*>::const_iterator it;
-  vector<Sensor*> prive;
-  for (it = sensors.cbegin() ; it != sensors.cend(); ++it){
-    Sensor s = **it;
-    if (s.userID < 0)
-      cout << "generateur du gov" << endl;
-    else
-      cout << "generateur de particulier" << endl;
-  }*/
-  cout << endl;
+    /*vector<Sensor*>::const_iterator it;
+    vector<Sensor*> prive;
+    for (it = sensors.cbegin() ; it != sensors.cend(); ++it){
+      Sensor s = **it;
+      if (s.userID < 0)
+        cout << "generateur du gov" << endl;
+      else 
+        cout << "generateur de particulier" << endl;
+    }*/
+    cout << endl;
+}
+
+void System::scanSensors() const {
+  SensorAnalysis sensorAnalysis;
+  sensorAnalysis.scanSensors(sensors);
 }

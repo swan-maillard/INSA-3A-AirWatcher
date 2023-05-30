@@ -20,6 +20,7 @@ using namespace std;
 #include "Sensor.h"
 #include "PrivateIndividuals.h"
 #include "FileAccess.h"
+#include "AirCleanerAnalysis.h"
 
 class System {
 
@@ -39,6 +40,7 @@ class System {
 
     void listAirCleaners() const;
 
+    void scanSensors() const;
     void statsAirCleaner() const;
 
 
