@@ -35,14 +35,14 @@ bool FileAccess::generateCleaners(vector<AirCleaner *> &lesCleaners, string prov
   providersFile.open(providersFN.c_str());
   if (!providersFile)
   {
-    cout << "erreur lors de l'ouverture du fichier providers";
+    cerr << "Erreur lors de l'ouverture du fichier providers" << endl;
     return false;
   }
   ifstream cleanersFile;
   cleanersFile.open(cleanerFN.c_str());
   if (!cleanersFile)
   {
-    cout << "erreur lors de l'ouverture du fichier cleaner";
+    cerr << "Erreur lors de l'ouverture du fichier cleaner" << endl;
     return false;
   }
 
@@ -54,11 +54,19 @@ bool FileAccess::generateCleaners(vector<AirCleaner *> &lesCleaners, string prov
     getline(providersFile, cleaner, ';');
     getline(cleanersFile, lat, ';');
     getline(cleanersFile, lon, ';');
-    AirCleaner *ac;
+    AirCleaner *ac = nullptr;
     try
     {
       ac = new AirCleaner(lat, lon, provider.at(provider.length() - 1) - 48, cleaner.at(7) - 48);
-
+    }
+    catch (exception e)
+    {
+      
+      cerr << "Erreur lors de la lecture du fichier AirCleaners.csv" << endl;
+      return false;
+    }
+    try
+    {
       while (temp == cleaner)
       {
         getline(cleanersFile, deb, ';');
@@ -79,8 +87,8 @@ bool FileAccess::generateCleaners(vector<AirCleaner *> &lesCleaners, string prov
     {
       if (ac != nullptr)
         delete ac;
-      cerr << "erreur lors de la lecture des fichiers" << endl;
-      return false; // Il serait plus propre de gérer l'erreur en libérant la mémoire
+      cerr << "Erreur lors de la lecture du fichier AirCleaners.csv" << endl;
+      return false;
     }
   }
 
@@ -106,7 +114,7 @@ bool FileAccess::generateSensors(vector<Sensor *> &lesSensors)
   sensorFile.open("data/sensors.csv");
   if (!sensorFile)
   {
-    cout << "erreur lors de l'ouverture du fichier sensor";
+    cerr << "Erreur lors de l'ouverture du fichier sensor" << endl;
     return false;
   }
   int userID = 0, sensorID = 0;
@@ -136,7 +144,7 @@ bool FileAccess::generateSensors(vector<Sensor *> &lesSensors)
     }
     catch (exception e)
     {
-      cerr << "erreur lors de la lecture du fichier sensors.csv" << endl;
+      cerr << "Erreur lors de la lecture du fichier sensors.csv" << endl;
       return false;
     }
   }
@@ -146,7 +154,7 @@ bool FileAccess::generateSensors(vector<Sensor *> &lesSensors)
   measureFile.open("data/measurements.csv");
   if (!measureFile)
   {
-    cerr << "erreur lors de l'ouverture du fichier measurements";
+    cerr << "Erreur lors de l'ouverture du fichier measurements" << endl;
     return false;
   }
 
@@ -165,7 +173,7 @@ bool FileAccess::generateSensors(vector<Sensor *> &lesSensors)
     }
     catch (exception e)
     {
-      cerr << "erreur lors de la lecture du fichier measurements.csv" << endl;
+      cerr << "Erreur lors de la lecture du fichier measurements.csv" << endl;
       return false;
     }
   }
@@ -186,7 +194,7 @@ bool FileAccess::mapUsers(map<string, string> &users)
   userFile.open("data/users.csv");
   if (!userFile)
   {
-    cout << "erreur lors de l'ouverture du fichier cleaner";
+    cerr << "erreur lors de l'ouverture du fichier user" << endl;
     return false;
   }
   string userID, sensorID, temp;

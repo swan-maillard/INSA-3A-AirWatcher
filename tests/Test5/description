@@ -1,2 +1,1 @@
-Ce test exécute le programme avec l'option -t 10, le fichier de log ne contenant pas de requêtes à 10h.
-Aucune page ne doit être affichée.
+Ce test exécute le programme sans le fichier sensors.csv
