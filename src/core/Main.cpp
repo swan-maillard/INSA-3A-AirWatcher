@@ -50,6 +50,7 @@ int main (int argc, char * argv[]) {
                 break;
             case 7 :
                 cout << "-- STATISTIQUE D'UN AIRCLEANER --" << endl;
+                sys.statsAirCleaner();
                 break;
 
             case 8:

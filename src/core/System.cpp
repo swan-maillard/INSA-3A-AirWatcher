@@ -72,6 +72,23 @@ void System::listAirCleaners() const
   cout << endl;
 }
 
+void System::statsAirCleaner() const
+{
+  vector<AirCleaner*>::const_iterator it;
+  int ind = 1, choix;
+  for (it = airCleaners.cbegin() ; it != airCleaners.cend(); ++it){
+      cout << ind << ": " << **it << endl;
+      ind++;
+  }
+  cout << "Quel airCleaners voulez-vous tester ?\nVotre choix : ";
+  cin >> choix;
+  while (choix > 2 && choix < 1){
+    cout << "Essayez a nouveau : ";
+    cin >> choix;
+  }
+
+}
+
 void System::listSensors() const
 {
   /*vector<Sensor*>::const_iterator it;
