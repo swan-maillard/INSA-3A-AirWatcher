@@ -38,6 +38,8 @@ class System {
 
     void infoSensor(const int id) const;
 
+    bool getIsCorrupt() const;
+
     void listAirCleaners() const;
 
     void scanSensors() const;
@@ -52,7 +54,7 @@ class System {
     vector<Sensor*> sensors;
     vector<AirCleaner*> airCleaners;
     vector<PrivateIndividuals> individuals;
-    bool corruptFile;
+    bool isCorrupt;
 //----------------------------------------------------- Attributs protégés
 
 

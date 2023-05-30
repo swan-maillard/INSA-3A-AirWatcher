@@ -39,7 +39,7 @@ int AirCleanerAnalysis::checkEfficiency(const AirCleaner & airCleaner, const vec
   int somme(0);
   //cout << airCleaner;
 
-  for(int )
+  //for(int )
 
   return somme;
 }

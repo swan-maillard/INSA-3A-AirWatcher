@@ -54,16 +54,16 @@ bool FileAccess::generateCleaners(vector<AirCleaner *> &lesCleaners, string prov
     getline(providersFile, cleaner, ';');
     getline(cleanersFile, lat, ';');
     getline(cleanersFile, lon, ';');
-
+    AirCleaner *ac;
     try
     {
-      AirCleaner *ac = new AirCleaner(lat, lon, provider.at(provider.length() - 1) - 48, cleaner.at(7) - 48);
+      ac = new AirCleaner(lat, lon, provider.at(provider.length() - 1) - 48, cleaner.at(7) - 48);
 
       while (temp == cleaner)
       {
         getline(cleanersFile, deb, ';');
         getline(cleanersFile, fin, ';');
-          ac->addWorkingHours(deb, fin);
+        ac->addWorkingHours(deb, fin);
 
         getline(cleanersFile, temp, '\n');
         getline(cleanersFile, temp, ';');
@@ -77,9 +77,10 @@ bool FileAccess::generateCleaners(vector<AirCleaner *> &lesCleaners, string prov
     }
     catch (exception e)
     {
-      delete ac;
+      if(ac != nullptr)
+        delete ac;
       cerr << "erreur lors de la lecture des fichiers" << endl;
-      return false; //Il serait plus propre de gérer l'erreur en libérant la mémoire
+      return false; // Il serait plus propre de gérer l'erreur en libérant la mémoire
     }
   }
 

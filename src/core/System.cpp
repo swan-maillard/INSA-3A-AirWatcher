@@ -31,20 +31,10 @@ System::System()
   if (!factory.generateCleaners(airCleaners))
   {
     cerr << "Erreur lors de la génération des airCleaners" << endl;
-    vector<AirCleaner *>::iterator it;
-    for (it = airCleaners.begin(); it != airCleaners.end(); ++it)
-    {
-      delete *it;
-    }
     isCorrupt = true;
   }
   else if (!factory.generateSensors(sensors))
   {
-    vector<Sensor *>::iterator it2;
-    for (it2 = sensors.begin(); it2 != sensors.end(); ++it2)
-    {
-      delete *it2;
-    }
     cerr << "Erreur lors de la génération des airSensors" << endl;
     isCorrupt = true;
   }
@@ -65,6 +55,11 @@ System::~System()
 #ifdef MAP
   cout << "Destruction de <System>" << endl;
 #endif
+}
+
+bool System::getIsCorrupt() const
+{
+  return isCorrupt;
 }
 
 void System::infoSensor(const int id) const
