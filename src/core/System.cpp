@@ -27,17 +27,17 @@ System::System()
 #ifdef MAP
   cout << "Construction de <System>" << endl;
 #endif
+  isCorrupt = false;
   if (!factory.generateCleaners(airCleaners))
   {
     cerr << "Erreur lors de la génération des airCleaners" << endl;
-    vector<AirCleaner *>::iterator it;
-    for (it = airCleaners.begin(); it != airCleaners.end(); ++it)
-    {
-      delete *it;
-    }
-    exit(1);
+    isCorrupt = true;
   }
-  factory.generateSensors(sensors);
+  else if (!factory.generateSensors(sensors))
+  {
+    cerr << "Erreur lors de la génération des airSensors" << endl;
+    isCorrupt = true;
+  }
 }
 
 System::~System()
@@ -55,6 +55,11 @@ System::~System()
 #ifdef MAP
   cout << "Destruction de <System>" << endl;
 #endif
+}
+
+bool System::getIsCorrupt() const
+{
+  return isCorrupt;
 }
 
 void System::infoSensor(const int id) const
@@ -75,11 +80,12 @@ void System::listAirCleaners() const
 
 void System::statsAirCleaner() const
 {
-  vector<AirCleaner*>::const_iterator it;
+  vector<AirCleaner *>::const_iterator it;
   int ind = 1, choix;
-  for (it = airCleaners.cbegin() ; it != airCleaners.cend(); ++it){
-      cout << ind << ": " << **it << endl;
-      ind++;
+  for (it = airCleaners.cbegin(); it != airCleaners.cend(); ++it)
+  {
+    cout << ind << ": " << **it << endl;
+    ind++;
   }
   cout << "Quel airCleaners voulez-vous tester ?\nVotre choix : ";
   cin >> choix;

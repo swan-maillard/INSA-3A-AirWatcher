@@ -7,6 +7,9 @@ using namespace std;
 
 int main (int argc, char * argv[]) {
     System sys;
+    if (sys.getIsCorrupt()) {
+        return 1;
+    }
     int choice, user;
     cout << "Bienvenue sur AirWatcher." << endl;
 
