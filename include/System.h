@@ -39,6 +39,8 @@ class System {
 
     void listAirCleaners() const;
 
+    void statsAirCleaner() const;
+
 
 //----------------------------------------------------------------- PRIVE
   private:
