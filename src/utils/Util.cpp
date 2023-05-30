@@ -20,12 +20,17 @@ double strToDouble(const std::string &str)
   double nb = 0;
   long unsigned int i = 0, p = 10;
   int neg = 1;
+
+  //Gestion des nombres négatifs
+  if (!((str.at(i) >= '0' && str.at(i) <= '9') || str.at(i) == '-'))
+    throw std::invalid_argument("Invalid argument");
   if (str.at(0) == '-')
   {
     i++;
     neg = -1;
   }
 
+  //Gestion des nombres avant la virgule
   while (i < str.length() && str.at(i) != '.')
   {
     nb *= 10;
@@ -35,6 +40,8 @@ double strToDouble(const std::string &str)
     i++;
   }
   i++;
+
+  //Gestion des nombres après la virgule
   while (i < str.length())
   {
     if (!((str.at(i) >= '0' && str.at(i) <= '9') || str.at(i) == '-'))

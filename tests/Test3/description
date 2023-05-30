@@ -1,3 +1,1 @@
-Ce test exécute le programme avec l'option -e.
-Teste le retrait des extensions suivantes : 
-jpg, JPG, jpeg, JPEG, png, PNG, gif, GIF, svg, SVG, wepbp, WEBP, bmp, BMP, ico, ICO, js, JS, css, CSS
+Ce test exécute le programme avec un fichier sensors corrompu

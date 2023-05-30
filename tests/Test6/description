@@ -1,1 +1,1 @@
-Ce test exécute le programme avec l'option -g et génère un fichier test.dot.
+Ce test exécute le programme sans le fichier measurements.csv
