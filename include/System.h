@@ -48,6 +48,7 @@ class System {
     vector<Sensor*> sensors;
     vector<AirCleaner*> airCleaners;
     vector<PrivateIndividuals> individuals;
+    bool corruptFile;
 //----------------------------------------------------- Attributs protégés
 
 
