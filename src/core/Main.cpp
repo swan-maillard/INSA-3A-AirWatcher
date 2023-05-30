@@ -49,6 +49,7 @@ int main (int argc, char * argv[]) {
                 break;
             case 2 :
                 cout << "-- DETAILS D'UN CAPTEUR --" << endl << endl;
+                sys.oneSensor();
                 break;
             case 3 :
                 cout << "-- STATISTIQUE DANS UN PERIMETRE --" << endl << endl;

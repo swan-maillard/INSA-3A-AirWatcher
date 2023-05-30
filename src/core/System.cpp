@@ -80,7 +80,7 @@ void System::listAirCleaners() const
 void System::statsAirCleaner() const
 {
   vector<AirCleaner *>::const_iterator it;
-  int ind = 1, choix;
+  int choix;
   for (it = airCleaners.cbegin(); it != airCleaners.cend(); ++it)
   {
     cout << **it << endl;
@@ -100,6 +100,20 @@ void System::statsAirCleaner() const
 
   int somme = airCleanerAnalysis.checkEfficiency(airCleaner, sensors);
 
+}
+
+void System::oneSensor()
+{
+  cout << "Choisis ton capteur entre 0 et " << sensors.size() - 1;
+  cout << "\nVotre choix : ";
+  int choix;
+  cin >> choix;
+  while (choix > (int)sensors.size() - 1 || choix < 0){
+    cout << "Reesayez : ";
+    cin >> choix;
+  }
+  sensors.at(choix)->affichageComplet();
+  cout << endl;
 }
 
 void System::listSensors() const
