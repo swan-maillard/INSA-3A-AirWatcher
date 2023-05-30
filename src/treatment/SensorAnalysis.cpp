@@ -61,7 +61,6 @@ void SensorAnalysis::scanSensors(const vector<Sensor*> & sensors) {
   SensorStats sensorStats;
   for (itSensor1 = sensors.begin() ; itSensor1 != sensors.end(); ++itSensor1) {
     Sensor * sensor = *itSensor1;
-    cout << "Pour le capteur " << sensor->getSensorID() << " situé en " << sensor->getPosition() << endl;
 
     sensorStats.O3 = (--sensor->getValO3().end())->second;
     sensorStats.NO2 = (--sensor->getValNO2().end())->second;
@@ -102,13 +101,7 @@ void SensorAnalysis::scanSensors(const vector<Sensor*> & sensors) {
       || abs(nearSensorStats.meanSO2 - sensorStats.SO2) > nearSensorStats.varianceSO2
       || abs(nearSensorStats.meanSO2 - sensorStats.NO2) > nearSensorStats.varianceNO2
       || abs(nearSensorStats.meanPM10 - sensorStats.PM10) > nearSensorStats.variancePM10) {
-        cout << "DEFECTUEUX" << endl;
-        cout << "Diff O3 : " << abs(nearSensorStats.meanO3 - sensorStats.O3) << " avec Variance : " << nearSensorStats.varianceO3 << endl;
-        cout << "Diff SO2 : " << abs(nearSensorStats.meanSO2 - sensorStats.SO2) << " avec Variance : " << nearSensorStats.varianceSO2 << endl;
-        cout << "Diff NO2 : " << abs(nearSensorStats.meanSO2 - sensorStats.NO2) << " avec Variance : " << nearSensorStats.varianceNO2 << endl;
-        cout << "Diff PM10 : " << abs(nearSensorStats.meanPM10 - sensorStats.PM10) << " avec Variance : " << nearSensorStats.variancePM10 << endl;
+        cout << "ATTENTION, le capteur " << sensor->getSensorID() << " semble défectueux." << endl;
       }
-    
-
   }
 }

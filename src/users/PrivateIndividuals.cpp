@@ -19,7 +19,6 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "../../include/PrivateIndividuals.h"
-#include "PrivateIndividuals.h"
 
 
 //----------------------------------------------------------------- PUBLIC
