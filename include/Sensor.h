@@ -38,7 +38,13 @@ class Sensor {
 
     void addValue(const string &date, const string &val, const string &type);
 
-    Position getPosition() const;
+    Position getPosition() const {return pos;}
+    int getSensorID() const {return sensorID;}
+    int getUserID() const {return userID;}
+    DicoMesure getValO3() const {return ValO3;}
+    DicoMesure getValNO2() const {return ValNO2;}
+    DicoMesure getValSO2() const {return ValSO2;}
+    DicoMesure getValPM10() const {return ValPM10;}
 
     friend std::ostream& operator << (std::ostream& os, const Sensor &S);
 

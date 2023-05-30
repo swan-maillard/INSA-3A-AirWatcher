@@ -35,11 +35,6 @@ Sensor::~Sensor()
 #endif
 }
 
-Position Sensor::getPosition() const
-{
-    return pos;
-}
-
 void Sensor::addValue(const string &date, const string &val,const string &type)
 {
     Date d(date);

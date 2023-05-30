@@ -20,6 +20,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "../../include/System.h"
+#include "../../include/SensorAnalysis.h"
 
 
 //----------------------------------------------------------------- PUBLIC
@@ -73,4 +74,9 @@ void System::listSensors() const
         cout << "generateur de particulier" << endl;
     }*/
     cout << endl;
+}
+
+void System::scanSensors() const {
+  SensorAnalysis sensorAnalysis;
+  sensorAnalysis.scanSensors(sensors);
 }

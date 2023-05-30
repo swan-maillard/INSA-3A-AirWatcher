@@ -44,6 +44,7 @@ int main (int argc, char * argv[]) {
                 break;
             case 5 :
                 cout << "-- SCAN DES CAPTEURS --" << endl;
+                sys.scanSensors();
                 break;
             case 6 :
                 cout << "-- LISTE DES AIRCLEANER --" << endl;
