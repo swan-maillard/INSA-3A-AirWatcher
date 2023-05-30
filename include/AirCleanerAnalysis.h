@@ -18,6 +18,7 @@ using namespace std;
 #include <vector>
 #include "AirCleaner.h"
 #include "Sensor.h"
+#include "Date.h"
 
 class AirCleanerAnalysis {
 
@@ -31,7 +32,7 @@ class AirCleanerAnalysis {
     // Destructeur
     ~AirCleanerAnalysis();
 
-    int checkEfficiency(const AirCleaner & cleanerId, const vector<Sensor*> & sensors) const;
+    int checkEfficiency(AirCleaner & cleanerId, const vector<Sensor*> & sensors) const;
 
 //----------------------------------------------------------------- PRIVE
   protected:

@@ -99,6 +99,7 @@ void System::statsAirCleaner() const
   }
 
   int somme = airCleanerAnalysis.checkEfficiency(airCleaner, sensors);
+  cout << somme << endl;
 
 }
 

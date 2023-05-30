@@ -19,6 +19,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "../../include/PrivateIndividuals.h"
+#include "PrivateIndividuals.h"
 
 
 //----------------------------------------------------------------- PUBLIC
@@ -34,4 +35,11 @@ PrivateIndividuals::~PrivateIndividuals() {
       cout << "Destruction de <PrivateIndividuals>" << endl;
   #endif
 }
-
+int PrivateIndividuals::getBonReduction()
+{
+  if (points > 150){
+    cout << "Bravo, vous avez gagné un bon de reduction !\n";
+    points-=150;
+  }
+  cout << "Vous avez " << points << " points !";
+}
