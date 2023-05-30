@@ -46,6 +46,8 @@ class Sensor {
     DicoMesure getValSO2() const {return ValSO2;}
     DicoMesure getValPM10() const {return ValPM10;}
 
+    void affichageComplet() const; 
+
     friend std::ostream& operator << (std::ostream& os, const Sensor &S);
 
 //----------------------------------------------------------------- PRIVE

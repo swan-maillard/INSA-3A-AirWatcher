@@ -69,7 +69,6 @@ void System::infoSensor(const int id) const
 
 void System::listAirCleaners() const
 {
-  cout << "## Liste des AirCleaners ##\n";
   vector<AirCleaner *>::const_iterator it;
   for (it = airCleaners.cbegin(); it != airCleaners.cend(); ++it)
   {
@@ -81,11 +80,10 @@ void System::listAirCleaners() const
 void System::statsAirCleaner() const
 {
   vector<AirCleaner *>::const_iterator it;
-  int ind = 1, choix;
+  int choix;
   for (it = airCleaners.cbegin(); it != airCleaners.cend(); ++it)
   {
-    cout << ind << ": " << **it << endl;
-    ind++;
+    cout << **it << endl;
   }
   cout << "Quel airCleaners voulez-vous tester ?\nVotre choix : ";
   cin >> choix;
@@ -101,20 +99,30 @@ void System::statsAirCleaner() const
   }
 
   int somme = airCleanerAnalysis.checkEfficiency(airCleaner, sensors);
+  cout << somme << endl;
 
+}
+
+void System::oneSensor()
+{
+  cout << "Choisis ton capteur entre 0 et " << sensors.size() - 1;
+  cout << "\nVotre choix : ";
+  int choix;
+  cin >> choix;
+  while (choix > (int)sensors.size() - 1 || choix < 0){
+    cout << "Reesayez : ";
+    cin >> choix;
+  }
+  sensors.at(choix)->affichageComplet();
+  cout << endl;
 }
 
 void System::listSensors() const
 {
-    /*vector<Sensor*>::const_iterator it;
-    vector<Sensor*> prive;
-    for (it = sensors.cbegin() ; it != sensors.cend(); ++it){
-      Sensor s = **it;
-      if (s.userID < 0)
-        cout << "generateur du gov" << endl;
-      else 
-        cout << "generateur de particulier" << endl;
-    }*/
+    vector<Sensor*>::const_iterator it;
+    for (it = sensors.begin() ; it < sensors.end() ; ++it){
+      cout << **it;
+    }
     cout << endl;
 }
 
