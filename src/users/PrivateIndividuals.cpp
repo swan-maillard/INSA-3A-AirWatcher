@@ -41,4 +41,5 @@ int PrivateIndividuals::getBonReduction()
     points-=150;
   }
   cout << "Vous avez " << points << " points !";
+  return points;
 }

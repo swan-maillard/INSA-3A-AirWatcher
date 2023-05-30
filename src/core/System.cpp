@@ -98,8 +98,12 @@ void System::statsAirCleaner() const
       airCleaner = **it;
   }
 
-  int somme = airCleanerAnalysis.checkEfficiency(airCleaner, sensors);
-  cout << somme << endl;
+  // it = airCleaners.cbegin();
+  // double pos = (*it)->getPosition().calculateDistance((*(++it))->getPosition());
+  // cout << "distance entre les 2 air cleaners : " << pos << endl;
+
+  double distanceEfficace = airCleanerAnalysis.checkEfficiency(airCleaner, sensors);
+  cout << "La distance efficace de l'air Cleaner est d'environ : " << distanceEfficace << endl;
 
 }
 
