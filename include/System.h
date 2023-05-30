@@ -44,6 +44,7 @@ class System {
 
     void scanSensors() const;
     void statsAirCleaner() const;
+    void oneSensor();
 
 
 //----------------------------------------------------------------- PRIVE

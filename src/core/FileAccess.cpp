@@ -77,7 +77,7 @@ bool FileAccess::generateCleaners(vector<AirCleaner *> &lesCleaners, string prov
     }
     catch (exception e)
     {
-      if(ac != nullptr)
+      if (ac != nullptr)
         delete ac;
       cerr << "erreur lors de la lecture des fichiers" << endl;
       return false; // Il serait plus propre de gérer l'erreur en libérant la mémoire
@@ -113,24 +113,32 @@ bool FileAccess::generateSensors(vector<Sensor *> &lesSensors)
   string sid, lat, lon, uid;
   while (getline(sensorFile, sid, ';'), !sensorFile.eof())
   {
-    getline(sensorFile, lat, ';');
-    getline(sensorFile, lon, ';');
+    try
+    {
 
-    map<string, string>::iterator it;
-    it = users.find(sid);
-    if (it == users.end())
-    {
-      userID = -1; // il s'agit du gouvernement
+      getline(sensorFile, lat, ';');
+      getline(sensorFile, lon, ';');
+      map<string, string>::iterator it;
+      it = users.find(sid);
+      if (it == users.end())
+      {
+        userID = -1; // il s'agit du gouvernement
+      }
+      else
+      {
+        uid = it->second;
+        userID = strToInt(uid.substr(4, uid.length() - 4));
+      }
+      sensorID = strToInt(sid.substr(6, sid.length() - 6));
+      Sensor *sens = new Sensor(lat, lon, sensorID++, userID);
+      lesSensors.push_back(sens);
+      getline(sensorFile, sid);
     }
-    else
+    catch (exception e)
     {
-      uid = it->second;
-      userID = strToInt(uid.substr(4, uid.length() - 4));
+      cerr << "erreur lors de la lecture du fichier sensors.csv" << endl;
+      return false;
     }
-    sensorID = strToInt(sid.substr(6, sid.length() - 6));
-    Sensor *sens = new Sensor(lat, lon, sensorID++, userID);
-    lesSensors.push_back(sens);
-    getline(sensorFile, sid);
   }
   sensorFile.close();
 
@@ -145,13 +153,21 @@ bool FileAccess::generateSensors(vector<Sensor *> &lesSensors)
   string date, type, val;
   while (getline(measureFile, date, ';'), !measureFile.eof())
   {
-    getline(measureFile, sid, ';');
-    getline(measureFile, type, ';');
-    getline(measureFile, val, ';');
-    sensorID = strToInt(sid.substr(6, sid.length() - 6));
-    lesSensors.at(sensorID)->addValue(date, val, type);
+    try
+    {
+      getline(measureFile, sid, ';');
+      getline(measureFile, type, ';');
+      getline(measureFile, val, ';');
+      sensorID = strToInt(sid.substr(6, sid.length() - 6));
+      lesSensors.at(sensorID)->addValue(date, val, type);
 
-    getline(measureFile, date);
+      getline(measureFile, date);
+    }
+    catch (exception e)
+    {
+      cerr << "erreur lors de la lecture du fichier measurements.csv" << endl;
+      return false;
+    }
   }
 
   return true;

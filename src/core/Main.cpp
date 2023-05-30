@@ -44,39 +44,41 @@ int main (int argc, char * argv[]) {
 
         switch (choice) {
             case 1:
-                cout << "-- LISTE DES CAPTEURS --" << endl;
+                cout << "-- LISTE DES CAPTEURS --" << endl << endl;
                 sys.listSensors();
                 break;
             case 2 :
-                cout << "-- DETAILS D'UN CAPTEUR --" << endl;
+                cout << "-- DETAILS D'UN CAPTEUR --" << endl << endl;
+                sys.oneSensor();
                 break;
             case 3 :
-                cout << "-- STATISTIQUE DANS UN PERIMETRE --" << endl;
+                cout << "-- STATISTIQUE DANS UN PERIMETRE --" << endl << endl;
                 break;
             case 4 :
-                cout << "-- STATISTIQUE A UNE POSITION --" << endl;
+                cout << "-- STATISTIQUE A UNE POSITION --" << endl << endl;
                 break;
             case 5 :
-                cout << "-- SCAN DES CAPTEURS --" << endl;
+                cout << "-- SCAN DES CAPTEURS --" << endl << endl;
                 sys.scanSensors();
                 break;
             case 6 :
                 if (user == 3){
-                    cout << "-- LISTE DES AIRCLEANER --" << endl;
+                    cout << "-- LISTE DES AIRCLEANER --" << endl << endl;
+                    sys.listAirCleaners();
                 }
                 break;
             case 7 :
                 if (user == 3){
-                    cout << "-- STATISTIQUE D'UN AIRCLEANER --" << endl;
+                    cout << "-- STATISTIQUE D'UN AIRCLEANER --" << endl << endl;
                     sys.statsAirCleaner();
                 }
                 break;
 
             case 8:
-                cout << "À bientôt sur AirWatcher !" << endl;
+                cout << "À bientôt sur AirWatcher !" << endl << endl;
                 break;
             default:
-                cout << "Veuillez choisir une option valide" << endl;
+                cout << "Veuillez choisir une option valide" << endl << endl;
         }
 
         cout << endl;

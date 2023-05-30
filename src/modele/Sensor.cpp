@@ -52,16 +52,25 @@ void Sensor::addValue(const string &date, const string &val,const string &type)
 
 ostream &operator<<(ostream &os, const Sensor &S)
 {
-    os << "SensorID : " << S.sensorID << "\tUserID : " << S.userID << "\n  A la position : " << S.pos;
-    DicoMesure::const_iterator i1, i2, i3, i4;
-    i1 = S.ValO3.cbegin();
-    i2 = S.ValNO2.cbegin();
-    i3 = S.ValSO2.cbegin();
-    i4 = S.ValPM10.cbegin();
-    while (i1 != S.ValO3.cend()){
-        os << "\nA la date " << i1->first << "\t03 : " << i1->second << "\tNO2 : " << i2->second << "\tSO2 : " << i3->second << "\tPM10 : " << i4->second;
-        ++i1; ++i2; ++i3; ++i4;
-    }
+    os << "SensorID : " << S.sensorID << "\tUserID : ";
+    if (S.getUserID() == -1)
+        os << "Gouv";
+    else 
+        os << "User" << S.getUserID();
+    os  << "  position : " << S.pos << endl;
 
     return os;
+}
+
+void Sensor::affichageComplet() const {
+    cout << "SensorID : " << sensorID << "\tUserID : " << userID << "\n  A la position : " << pos;
+    DicoMesure::const_iterator i1, i2, i3, i4;
+    i1 = ValO3.cbegin();
+    i2 = ValNO2.cbegin();
+    i3 = ValSO2.cbegin();
+    i4 = ValPM10.cbegin();
+    while (i1 != ValO3.cend()){
+        cout << "\nA la date " << i1->first << "\t03 : " << i1->second << "\tNO2 : " << i2->second << "\tSO2 : " << i3->second << "\tPM10 : " << i4->second;
+        ++i1; ++i2; ++i3; ++i4;
+    }
 }

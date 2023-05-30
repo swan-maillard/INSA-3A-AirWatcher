@@ -71,10 +71,11 @@ AirCleaner::~AirCleaner()
 
 ostream & operator << (ostream& os, const AirCleaner& AC)
 {
-    os << "CleanerID : " << AC.cleanerId << "\tproviderID : " << AC.providerId << "\nA la position : " << AC.position;
+    os << "CleanerID : " << AC.cleanerId << "\tproviderID : " << AC.providerId << "\n\tA la position : " << AC.position << "\n\tPériodes de fonctionnement :";
     map<Date, Date>::const_iterator it;
     for (it = AC.workingHours.cbegin() ; it != AC.workingHours.cend() ; ++it){
-        os << "\nDe : " << (it->first) << " -> " << (it->second);
+        os << "\n\t\tDe : " << (it->first) << " -> " << (it->second);
     }
+    os << endl;
     return os;
 } 
