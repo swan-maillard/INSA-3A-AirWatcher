@@ -15,6 +15,7 @@ using namespace std;
 #include <iostream>
 #include <string>
 #include <vector>
+#include <time.h>
 
 //------------------------------------------------------ Include personnel
 #include "../../include/System.h"
@@ -101,8 +102,9 @@ void System::statsAirCleaner() const
   // it = airCleaners.cbegin();
   // double pos = (*it)->getPosition().calculateDistance((*(++it))->getPosition());
   // cout << "distance entre les 2 air cleaners : " << pos << endl;
-
+  clock_t t = clock();
   double distanceEfficace = airCleanerAnalysis.checkEfficiency(airCleaner, sensors);
+  printf("Temps d'execution pour efficacité d'un airCleaner : %.3fs\n", ((double) (clock() - t)) / CLOCKS_PER_SEC);
   cout << "La distance efficace de l'air Cleaner est d'environ : " << distanceEfficace << endl;
 
 }
@@ -131,6 +133,7 @@ void System::listSensors() const
 }
 
 void System::scanSensors() const {
+  clock_t t = clock();
   SensorAnalysis sensorAnalysis;
   sensorAnalysis.scanSensors(sensors);
 }

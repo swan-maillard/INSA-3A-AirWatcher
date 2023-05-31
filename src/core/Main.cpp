@@ -4,9 +4,12 @@ using namespace std;
 #include <limits>
 #include <vector>
 #include "../../include/System.h"
+#include <time.h>
 
 int main (int argc, char * argv[]) {
+    clock_t t = clock();
     System sys;
+    printf("Temps d'execution pour le chargement des fichier : %.3fs\n", ((double) (clock() - t)) / CLOCKS_PER_SEC);
     if (sys.getIsCorrupt()) {
         return 1;
     }
@@ -58,8 +61,12 @@ int main (int argc, char * argv[]) {
                 cout << "-- STATISTIQUE A UNE POSITION --" << endl << endl;
                 break;
             case 5 :
-                cout << "-- SCAN DES CAPTEURS --" << endl << endl;
-                sys.scanSensors();
+                if (user == 3){
+                    cout << "-- SCAN DES CAPTEURS --" << endl << endl;
+                    t = clock();
+                    sys.scanSensors();
+                    printf("Temps d'execution pour le scan des capteurs : %.3fs\n", ((double) (clock() - t)) / CLOCKS_PER_SEC);
+                }
                 break;
             case 6 :
                 if (user == 3){
