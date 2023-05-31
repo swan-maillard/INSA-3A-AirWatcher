@@ -5,11 +5,16 @@ using namespace std;
 #include <vector>
 #include "../../include/System.h"
 #include <time.h>
+#include <cstring>
 
 int main (int argc, char * argv[]) {
+    int takeTime = 0;
+    if (argc > 1 && strcmp(argv[1], "-t") == 0){
+        takeTime = 1;
+    }
     clock_t t = clock();
     System sys;
-    printf("Temps d'execution pour le chargement des fichier : %.3fs\n", ((double) (clock() - t)) / CLOCKS_PER_SEC);
+    if (takeTime) printf("Temps d'execution pour le chargement des fichier : %.3fs\n", ((double) (clock() - t)) / CLOCKS_PER_SEC);
     if (sys.getIsCorrupt()) {
         return 1;
     }
@@ -63,9 +68,7 @@ int main (int argc, char * argv[]) {
             case 5 :
                 if (user == 3){
                     cout << "-- SCAN DES CAPTEURS --" << endl << endl;
-                    t = clock();
-                    sys.scanSensors();
-                    printf("Temps d'execution pour le scan des capteurs : %.3fs\n", ((double) (clock() - t)) / CLOCKS_PER_SEC);
+                    sys.scanSensors(takeTime);
                 }
                 break;
             case 6 :
@@ -77,7 +80,7 @@ int main (int argc, char * argv[]) {
             case 7 :
                 if (user == 3){
                     cout << "-- STATISTIQUE D'UN AIRCLEANER --" << endl << endl;
-                    sys.statsAirCleaner();
+                    sys.statsAirCleaner(takeTime);
                 }
                 break;
 

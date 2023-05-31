@@ -78,7 +78,7 @@ void System::listAirCleaners() const
   cout << endl;
 }
 
-void System::statsAirCleaner() const
+void System::statsAirCleaner(const int time) const
 {
   vector<AirCleaner *>::const_iterator it;
   int choix;
@@ -92,20 +92,17 @@ void System::statsAirCleaner() const
     cout << "Veuillez entrer une valeur entre 0 et " << airCleaners.size() - 1 << " :" << endl;
     cin >> choix;
   }
+
+  clock_t t = clock();
   AirCleanerAnalysis airCleanerAnalysis;
   AirCleaner airCleaner;
   for (it = airCleaners.cbegin() ; it != airCleaners.cend(); ++it){
     if((**it).getCleanerId() == choix)
       airCleaner = **it;
   }
-
-  // it = airCleaners.cbegin();
-  // double pos = (*it)->getPosition().calculateDistance((*(++it))->getPosition());
-  // cout << "distance entre les 2 air cleaners : " << pos << endl;
-  clock_t t = clock();
   double distanceEfficace = airCleanerAnalysis.checkEfficiency(airCleaner, sensors);
-  printf("Temps d'execution pour efficacité d'un airCleaner : %.3fs\n", ((double) (clock() - t)) / CLOCKS_PER_SEC);
   cout << "La distance efficace de l'air Cleaner est d'environ : " << distanceEfficace << endl;
+  if (time) printf("Temps d'execution pour efficacité d'un airCleaner : %.3fs\n", ((double) (clock() - t)) / CLOCKS_PER_SEC);
 
 }
 
@@ -132,8 +129,9 @@ void System::listSensors() const
     cout << endl;
 }
 
-void System::scanSensors() const {
+void System::scanSensors(const int time) const {
   clock_t t = clock();
   SensorAnalysis sensorAnalysis;
   sensorAnalysis.scanSensors(sensors);
+  if (time) printf("Temps d'execution pour scanner les capteurs : %.3fs\n", ((double) (clock() - t)) / CLOCKS_PER_SEC);
 }

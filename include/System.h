@@ -42,8 +42,8 @@ class System {
 
     void listAirCleaners() const;
 
-    void scanSensors() const;
-    void statsAirCleaner() const;
+    void scanSensors(const int time) const;
+    void statsAirCleaner(const int time) const;
     void oneSensor();
 
 
