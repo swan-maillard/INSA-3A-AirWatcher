@@ -1,2 +1,1 @@
-Ce test exécute le programme avec un fichier log contenant des requêtes incorrectes.
-Aucune page ne doit être affichée.
+Ce test examine les capteurs défectueux, avec des données défectueuses pour le capteur 5.

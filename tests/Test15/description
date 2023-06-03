@@ -1,2 +1,0 @@
-Ce test exécute le programme sans options et avec un nom de fichier log inexistant.
-Une erreur devrait être lancée.

@@ -1,2 +1,1 @@
-Ce test exécute le programme sans options avec un fichier config précisant la BASE_URL "http://test.fr".
-"http://test.fr" sera supprimé des URL la contenant.
+Ce test execute le programme en chargeant toutes les données en mémoire, les fichiers ne sont pas corrompu.

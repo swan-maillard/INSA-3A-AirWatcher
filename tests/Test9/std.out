@@ -1,3 +1,17 @@
-/page1.html (3 hits)
-/page2.html (2 hits)
-/asset.jpg (1 hits)
+Bienvenue sur AirWatcher.
+Voulez vous :
+	1 - Consulter des données sans se connecter.
+	2 - Vous connecter comme utilisateur
+	3 - Vous connecter comme gouvernement
+Votre choix : Que souhaitez-vous faire ?
+	1 - Obtenir la liste des capteurs
+	2 - Obtenir les infos d'un capteur
+	3 - Obtenir statistiques dans un périmètre géographique
+	4 - Obtenir statistiques à une position géographique
+	5 - Détecter un capteur disfonctionnel
+	6 - Obtenir la liste des airCleaners
+	7 - Obtenir les statistiques sur un airCleaner
+	8 - Quitter l'application
+À bientôt sur AirWatcher !
+
+

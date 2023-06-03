@@ -1,2 +1,1 @@
-Ce test exécute le programme sans option, dont les requêtes ont des codes de statut variants entre 100 et 500.
-Seules les pages ayant un code compris entre [200 ; 300[ doivent être affichées.
+Ce test examine les capteurs défectueux, avec tous les capteurs fonctionnels.

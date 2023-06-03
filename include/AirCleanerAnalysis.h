@@ -32,7 +32,7 @@ class AirCleanerAnalysis {
     // Destructeur
     ~AirCleanerAnalysis();
 
-    double checkEfficiency(AirCleaner & cleanerId, const vector<Sensor*> & sensors) const;
+    double* checkEfficiency(AirCleaner & cleanerId, const vector<Sensor*> & sensors) const;
 
 //----------------------------------------------------------------- PRIVE
   protected:
