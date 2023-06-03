@@ -100,12 +100,7 @@ void System::statsAirCleaner(const int time) const
     if((**it).getCleanerId() == choix)
       airCleaner = **it;
   }
-  double* distanceEfficace = airCleanerAnalysis.checkEfficiency(airCleaner, sensors);
-  cout << "La distance efficace de l'air Cleaner pour NO2 est d'environ : " << distanceEfficace[0] << endl;
-  cout << "La distance efficace de l'air Cleaner pour O3 est d'environ : " << distanceEfficace[1] << endl;
-  cout << "La distance efficace de l'air Cleaner pour SO2 est d'environ : " << distanceEfficace[2] << endl;
-  cout << "La distance efficace de l'air Cleaner pour PM10 est d'environ : " << distanceEfficace[3] << endl;
-  delete[] distanceEfficace;
+  airCleanerAnalysis.checkEfficiency(airCleaner, sensors);
   if (time) printf("Temps d'execution pour efficacité d'un airCleaner : %.3fs\n", ((double) (clock() - t)) / CLOCKS_PER_SEC);
 
 }

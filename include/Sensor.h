@@ -37,6 +37,8 @@ class Sensor {
     ~Sensor();
 
     void addValue(const string &date, const string &val, const string &type);
+    double* valeurA(Date &d);
+    Date limiteDate(Date &debRecherche, double* values);
 
     Position getPosition() const {return pos;}
     int getSensorID() const {return sensorID;}
