@@ -37,7 +37,7 @@ class Sensor {
     ~Sensor();
 
     void addValue(const string &date, const string &val, const string &type);
-    double* valeurAvAp(Date &d);
+    double* valeurAvantEtApres(Date &d, Date &f);
     Date limiteDate(Date &debRecherche, double* values);
 
     Position    getPosition() const { return pos;      }

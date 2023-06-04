@@ -26,11 +26,11 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 double Position::calculateDistance(Position otherPosition) {
-    double lat1 = this->latitude;
-    double lon1 = this->longitude;
-    double lat2 = otherPosition.latitude;
-    double lon2 = otherPosition.longitude;
-    return(sqrt(pow(lat1 - lat2, 2) + pow(lon1 - lon2, 2)));
+    double lat1 = this->latitude * M_PI / 180.;
+    double lon1 = this->longitude * M_PI / 180.;
+    double lat2 = otherPosition.latitude * M_PI / 180.;
+    double lon2 = otherPosition.longitude * M_PI / 180.;
+    return(acos(sin(lon1)*sin(lon2)+cos(lon1)*cos(lon2)*cos(lat1-lat2))*6371);
 }
 
 bool Position::isIn(Position otherPosition, double radius) {

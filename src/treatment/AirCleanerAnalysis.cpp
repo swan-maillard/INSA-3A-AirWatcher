@@ -50,10 +50,9 @@ void AirCleanerAnalysis::checkEfficiency(AirCleaner &airCleaner, const vector<Se
 
   multimap<double, Sensor*>::iterator it = distanceMapSensors.begin();
   double *val;
-  val = it->second->valeurAvAp(debut);
+  val = it->second->valeurAvantEtApres(debut, fin);
   for (int i = 0 ; i < 4 ; i++){
     efficacite[i] = (val[i] - val[4+i]) / val[i];
-    borne[i] = val[i+4] + val[i] * efficacite[i] * 0.25; //jusqua ce qu'il reprennet 50% de sa valeur initiale
   }
   delete[] val;
   if (efficacite[0] < 0.05 && efficacite[1] < 0.05 && efficacite[2] < 0.05 && efficacite[3] < 0.05){
@@ -61,18 +60,18 @@ void AirCleanerAnalysis::checkEfficiency(AirCleaner &airCleaner, const vector<Se
     return;
   }
 
-  Date finEfficacite = it->second->limiteDate(fin, borne);
-
   cout << endl << "L'efficacite de l'air Cleaner pour NO2 est de : " << (int)(100*efficacite[0]) << "%" << endl;
   cout << "L'efficacite de l'air Cleaner pour O3 est de : " << (int)(100*efficacite[1]) << "%" << endl;
   cout << "L'efficacite de l'air Cleaner pour SO2 est de : " << (int)(100*efficacite[2])  << "%" << endl;
   cout << "L'efficacite de l'air Cleaner pour PM10 est de : " << (int)(100*efficacite[3]) << "%" << endl;
-  cout << endl << "Arret le " << fin << " et efficace jusqu'au " << finEfficacite << endl;
 
   it++;
   while (it != distanceMapSensors.end() && finir == false) {
-    val = it->second->valeurAvAp(debut);
-    if(val[4] > borne[0] || val[5] > borne[1] || val[6] > borne[2] || val[7] > borne[3])
+    val = it->second->valeurAvantEtApres(debut, fin);
+    for (int i = 0 ; i < 4 ; i++){
+      efficacite[i] = (val[i] - val[4+i]) / val[i];
+    }
+    if (efficacite[0] < 0.05 && efficacite[1] < 0.05 && efficacite[2] < 0.05 && efficacite[3] < 0.05)
       finir = true;
     else
       ++it;
@@ -81,5 +80,5 @@ void AirCleanerAnalysis::checkEfficiency(AirCleaner &airCleaner, const vector<Se
   --it;
 
   double rayon = airCleaner.getPosition().calculateDistance(it->second->getPosition());
-  cout << endl << "Le rayon de fonctionnement est de " << rayon*79 << " km" << endl;
+  cout << endl << "Le rayon de fonctionnement est de " << rayon << " km" << endl;
 }

@@ -50,17 +50,17 @@ void Sensor::addValue(const string &date, const string &val,const string &type)
     }
 }
 
-double *Sensor::valeurAvAp(Date &d)
+double *Sensor::valeurAvantEtApres(Date &d, Date &f)
 {
     double *lesValeurs = new double[8];
     lesValeurs[0] = (--(ValO3.lower_bound(d)))->second;
     lesValeurs[1] = (--(ValNO2.lower_bound(d)))->second;
     lesValeurs[2] = (--(ValSO2.lower_bound(d)))->second;
     lesValeurs[3] = (--(ValPM10.lower_bound(d)))->second;
-    lesValeurs[4] = ValO3.lower_bound(d)->second;
-    lesValeurs[5] = ValNO2.lower_bound(d)->second;
-    lesValeurs[6] = ValSO2.lower_bound(d)->second;
-    lesValeurs[7] = ValPM10.lower_bound(d)->second;
+    lesValeurs[4] = (--ValO3.lower_bound(f))->second;
+    lesValeurs[5] = (--ValNO2.lower_bound(f))->second;
+    lesValeurs[6] = (--ValSO2.lower_bound(f))->second;
+    lesValeurs[7] = (--ValPM10.lower_bound(f))->second;
     return lesValeurs;
 }
 
