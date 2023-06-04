@@ -37,16 +37,16 @@ class Sensor {
     ~Sensor();
 
     void addValue(const string &date, const string &val, const string &type);
-    double* valeurA(Date &d);
+    double* valeurAvAp(Date &d);
     Date limiteDate(Date &debRecherche, double* values);
 
-    Position getPosition() const {return pos;}
-    int getSensorID() const {return sensorID;}
-    int getUserID() const {return userID;}
-    DicoMesure getValO3() const {return ValO3;}
-    DicoMesure getValNO2() const {return ValNO2;}
-    DicoMesure getValSO2() const {return ValSO2;}
-    DicoMesure getValPM10() const {return ValPM10;}
+    Position    getPosition() const { return pos;      }
+    int         getSensorID() const { return sensorID; }
+    int         getUserID()   const { return userID;   }
+    DicoMesure  getValO3()    const { return ValO3;    }
+    DicoMesure  getValNO2()   const { return ValNO2;   }
+    DicoMesure  getValSO2()   const { return ValSO2;   }
+    DicoMesure  getValPM10()  const { return ValPM10;  }
 
     void affichageComplet() const; 
 

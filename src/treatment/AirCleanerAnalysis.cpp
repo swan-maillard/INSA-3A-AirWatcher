@@ -50,7 +50,7 @@ void AirCleanerAnalysis::checkEfficiency(AirCleaner &airCleaner, const vector<Se
 
   multimap<double, Sensor*>::iterator it = distanceMapSensors.begin();
   double *val;
-  val = it->second->valeurA(debut);
+  val = it->second->valeurAvAp(debut);
   for (int i = 0 ; i < 4 ; i++){
     efficacite[i] = (val[i] - val[4+i]) / val[i];
     borne[i] = val[i+4] + val[i] * efficacite[i] * 0.25; //jusqua ce qu'il reprennet 50% de sa valeur initiale
@@ -71,7 +71,7 @@ void AirCleanerAnalysis::checkEfficiency(AirCleaner &airCleaner, const vector<Se
 
   it++;
   while (it != distanceMapSensors.end() && finir == false) {
-    val = it->second->valeurA(debut);
+    val = it->second->valeurAvAp(debut);
     if(val[4] > borne[0] || val[5] > borne[1] || val[6] > borne[2] || val[7] > borne[3])
       finir = true;
     else

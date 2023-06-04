@@ -39,7 +39,7 @@ class FileAccess {
 //----------------------------------------------------------------- PRIVE
   protected:
   
-    bool mapUsers(map<string, string> &users);
+    bool linkUsersSensors(map<string, string> &users);
 //----------------------------------------------------- Attributs protégés
 
 

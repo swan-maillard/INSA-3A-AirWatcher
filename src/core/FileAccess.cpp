@@ -29,6 +29,13 @@ FileAccess::FileAccess()
 #endif
 }
 
+FileAccess::~FileAccess()
+{
+#ifdef MAP
+  cout << "Destruction de <FileAccess>" << endl;
+#endif
+}
+
 bool FileAccess::generateCleaners(vector<AirCleaner *> &lesCleaners, string providersFN, string cleanerFN)
 {
   ifstream providersFile;
@@ -100,7 +107,7 @@ bool FileAccess::generateCleaners(vector<AirCleaner *> &lesCleaners, string prov
 bool FileAccess::generateSensors(vector<Sensor *> &lesSensors)
 {
   map<string, string> users;
-  if (mapUsers(users) == false)
+  if (linkUsersSensors(users) == false)
   {
     return false;
   }
@@ -181,14 +188,7 @@ bool FileAccess::generateSensors(vector<Sensor *> &lesSensors)
   return true;
 }
 
-FileAccess::~FileAccess()
-{
-#ifdef MAP
-  cout << "Destruction de <FileAccess>" << endl;
-#endif
-}
-
-bool FileAccess::mapUsers(map<string, string> &users)
+bool FileAccess::linkUsersSensors(map<string, string> &users)
 {
   ifstream userFile;
   userFile.open("data/users.csv");

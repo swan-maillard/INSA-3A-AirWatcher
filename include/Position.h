@@ -30,10 +30,7 @@ class Position {
 
     double getLatitude();
 
-    void setLongitude(double longitude);
-
-    void setLatitude(double latitude);
-    // Constructeur
+    // Constructeurs
     Position(double latitude, double longitude);
 
     Position(string lat = "0.0", string lon = "0.0");

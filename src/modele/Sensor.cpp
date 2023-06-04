@@ -50,7 +50,7 @@ void Sensor::addValue(const string &date, const string &val,const string &type)
     }
 }
 
-double *Sensor::valeurA(Date &d)
+double *Sensor::valeurAvAp(Date &d)
 {
     double *lesValeurs = new double[8];
     lesValeurs[0] = (--(ValO3.lower_bound(d)))->second;
