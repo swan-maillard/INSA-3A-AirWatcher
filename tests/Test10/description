@@ -1,0 +1,2 @@
+Ce test execute le programme en chargeant toutes les données en mémoire, les fichiers ne sont pas corrompu.
+Doit être efficace pour une distance de 0.5
