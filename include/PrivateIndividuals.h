@@ -37,7 +37,7 @@ class PrivateIndividuals {
 //----------------------------------------------------- Attributs protégés
   int points;
   int id;
-  int isExcluded;
+  bool isExcluded;
   vector<Sensor*> sensorsProvided;
 
 };

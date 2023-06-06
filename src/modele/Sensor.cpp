@@ -23,6 +23,7 @@ using namespace std;
 
 Sensor::Sensor(const string &lat, const string &lon, const int aSensorID, const int aUserID) : pos(Position(lat,lon)), sensorID(aSensorID), userID(aUserID)
 {
+    isBanned = false;
 #ifdef MAP
     cout << "Constructeur de <Sensor>" << endl;
 #endif
@@ -35,6 +36,10 @@ Sensor::~Sensor()
 #endif
 }
 
+void Sensor::setBanned(bool state)
+{
+    isBanned = state;
+}
 void Sensor::addValue(const string &date, const string &val,const string &type)
 {
     Date d(date);

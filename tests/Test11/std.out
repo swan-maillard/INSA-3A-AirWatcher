@@ -21,12 +21,7 @@ CleanerID : 0	providerID : 0
 
 Quel airCleaners voulez-vous tester ?
 Votre choix : 
-L'efficacite de l'air Cleaner pour NO2 est de : 50%
-L'efficacite de l'air Cleaner pour O3 est de : 50%
-L'efficacite de l'air Cleaner pour SO2 est de : 50%
-L'efficacite de l'air Cleaner pour PM10 est de : 40%
-
-Le rayon de fonctionnement est de 55.5975 km
+Ce air Cleaner n'a eu aucun effet sur l'air environnant, il faudrait le réviser ou le déplacer !
 
 Que souhaitez-vous faire ?
 	1 - Obtenir la liste des capteurs

@@ -101,6 +101,7 @@ void SensorAnalysis::scanSensors(const vector<Sensor*> & sensors) {
       || abs(nearSensorStats.meanSO2 - sensorStats.SO2) > nearSensorStats.varianceSO2
       || abs(nearSensorStats.meanSO2 - sensorStats.NO2) > nearSensorStats.varianceNO2
       || abs(nearSensorStats.meanPM10 - sensorStats.PM10) > nearSensorStats.variancePM10) {
+        sensor->setBanned(true);
         cout << "ATTENTION, le capteur " << sensor->getSensorID() << " semble défectueux." << endl;
       }
   }

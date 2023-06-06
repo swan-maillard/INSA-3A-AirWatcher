@@ -63,11 +63,6 @@ bool System::getIsCorrupt() const
   return isCorrupt;
 }
 
-void System::infoSensor(const int id) const
-{
-  cout << &(sensors.at(id)) << endl;
-}
-
 void System::listAirCleaners() const
 {
   vector<AirCleaner *>::const_iterator it;

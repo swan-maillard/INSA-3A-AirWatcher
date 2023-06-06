@@ -15,6 +15,8 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <string>
+#include <vector>
+#include "AirCleaner.h"
 
 class Providers {
 
@@ -31,7 +33,8 @@ class Providers {
 //----------------------------------------------------------------- PRIVE
   protected:
 //----------------------------------------------------- Attributs protégés
-
+  int id;
+  vector<AirCleaner*> airCleaners;
 
 };
 

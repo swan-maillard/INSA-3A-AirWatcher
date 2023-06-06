@@ -40,22 +40,26 @@ void AirCleanerAnalysis::checkEfficiency(AirCleaner &airCleaner, const vector<Se
   vector<Sensor*>::const_iterator itSensor;
   for (itSensor = sensors.begin() ; itSensor != sensors.end(); ++itSensor) {
     Sensor *sensor = *itSensor;
-    double distance = airCleaner.getPosition().calculateDistance(sensor->getPosition());
-    distanceMapSensors.insert(pair<double, Sensor*>(distance, sensor));
+    if(!sensor->getBanned())
+    {
+      double distance = airCleaner.getPosition().calculateDistance(sensor->getPosition());
+      distanceMapSensors.insert(pair<double, Sensor*>(distance, sensor));
+    }
+
   }
   Date debut = airCleaner.getWorkingHours().begin()->first;
   Date fin = airCleaner.getWorkingHours().begin()->second;
-  double efficacite[4], borne[4];
+  double efficacite[4];
   bool finir = false;
 
   multimap<double, Sensor*>::iterator it = distanceMapSensors.begin();
   double *val;
   val = it->second->valeurAvantEtApres(debut, fin);
   for (int i = 0 ; i < 4 ; i++){
-    efficacite[i] = (val[i] - val[4+i]) / val[i];
+    efficacite[i] = (val[i] - val[4+i]) / (double)val[i];
   }
   delete[] val;
-  if (efficacite[0] < 0.05 && efficacite[1] < 0.05 && efficacite[2] < 0.05 && efficacite[3] < 0.05){
+  if (efficacite[0] < 0.25 && efficacite[1] < 0.25 && efficacite[2] < 0.25 && efficacite[3] < 0.25){
     cout << endl << "Ce air Cleaner n'a eu aucun effet sur l'air environnant, il faudrait le réviser ou le déplacer !\n";
     return;
   }
@@ -71,7 +75,7 @@ void AirCleanerAnalysis::checkEfficiency(AirCleaner &airCleaner, const vector<Se
     for (int i = 0 ; i < 4 ; i++){
       efficacite[i] = (val[i] - val[4+i]) / val[i];
     }
-    if (efficacite[0] < 0.05 && efficacite[1] < 0.05 && efficacite[2] < 0.05 && efficacite[3] < 0.05)
+    if (efficacite[0] < 0.25 && efficacite[1] < 0.25 && efficacite[2] < 0.25 && efficacite[3] < 0.25)
       finir = true;
     else
       ++it;

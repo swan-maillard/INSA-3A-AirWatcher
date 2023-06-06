@@ -47,6 +47,8 @@ class Sensor {
     DicoMesure  getValNO2()   const { return ValNO2;   }
     DicoMesure  getValSO2()   const { return ValSO2;   }
     DicoMesure  getValPM10()  const { return ValPM10;  }
+    bool  getBanned()  const { return isBanned;  }
+    void  setBanned(bool state);
 
     void affichageComplet() const; 
 
@@ -57,6 +59,7 @@ class Sensor {
     Position pos;
     int sensorID;
     int userID;
+    bool isBanned;
     DicoMesure ValO3;
     DicoMesure ValNO2;
     DicoMesure ValSO2;
