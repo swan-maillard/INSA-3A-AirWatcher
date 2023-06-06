@@ -66,9 +66,8 @@ bool FileAccess::generateCleaners(vector<AirCleaner *> &lesCleaners, string prov
     {
       ac = new AirCleaner(lat, lon, provider.at(provider.length() - 1) - 48, cleaner.at(7) - 48);
     }
-    catch (exception e)
+    catch (std::out_of_range const&)
     {
-      
       cerr << "Erreur lors de la lecture du fichier AirCleaners.csv" << endl;
       return false;
     }
@@ -90,7 +89,7 @@ bool FileAccess::generateCleaners(vector<AirCleaner *> &lesCleaners, string prov
       }
       lesCleaners.push_back(ac);
     }
-    catch (exception e)
+    catch (std::out_of_range const&)
     {
       if (ac != nullptr)
         delete ac;
@@ -111,11 +110,6 @@ bool FileAccess::generateSensors(vector<Sensor *> &lesSensors)
   {
     return false;
   }
-  /*
-  map<string, string>::iterator it;
-  for (it = users.begin(); it != users.end() ; ++it){
-    cout << it->first << " : " << it->second << endl;
-  }*/
 
   ifstream sensorFile;
   sensorFile.open("data/sensors.csv");
@@ -149,7 +143,7 @@ bool FileAccess::generateSensors(vector<Sensor *> &lesSensors)
       lesSensors.push_back(sens);
       getline(sensorFile, sid);
     }
-    catch (exception e)
+    catch (std::out_of_range const&)
     {
       cerr << "Erreur lors de la lecture du fichier sensors.csv" << endl;
       return false;
@@ -178,7 +172,7 @@ bool FileAccess::generateSensors(vector<Sensor *> &lesSensors)
 
       getline(measureFile, date);
     }
-    catch (exception e)
+    catch (std::out_of_range const&)
     {
       cerr << "Erreur lors de la lecture du fichier measurements.csv" << endl;
       return false;

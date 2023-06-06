@@ -30,7 +30,10 @@ class FileAccess {
     // Constructeur
     FileAccess();
 
+    // Génère une liste d'AirCleaner à partir des fichiers .csv
     bool generateCleaners(vector<AirCleaner*> &lesCleaners, string providers = "data/providers.csv", string cleaners = "data/cleaners.csv");
+    
+    // Génère une liste de capteurs à partir d'un fichier .csv 
     bool generateSensors(vector<Sensor*> &lesSensors);
 
     // Destructeur

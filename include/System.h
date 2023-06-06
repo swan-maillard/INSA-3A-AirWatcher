@@ -34,14 +34,22 @@ class System {
     // Destructeur
     ~System();
 
+    // Affiche la liste des capteurs
     void listSensors() const;
 
+    // Renvoit true si les données n'ont pas pu être chargées correctement
     bool getIsCorrupt() const;
 
+    // Affiche la liste des AirCleaners
     void listAirCleaners() const;
 
+    // Analyse les capteurs et affiche ceux potentiellement défectueux
     void scanSensors(const int time) const;
+
+    // Affiche les statistiques des AirCleaners
     void statsAirCleaner(const int time) const;
+
+    // Demande de choisir un capteur et affiche ses informations
     void oneSensor();
 
 

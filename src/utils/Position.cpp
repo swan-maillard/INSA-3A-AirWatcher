@@ -26,10 +26,14 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 double Position::calculateDistance(Position otherPosition) {
+    // On suppose que les latitudes et longitudes données sont en degré
+    // On convertit les latitudes et les longitudes en radians
     double lat1 = this->latitude * M_PI / 180.;
     double lon1 = this->longitude * M_PI / 180.;
     double lat2 = otherPosition.latitude * M_PI / 180.;
     double lon2 = otherPosition.longitude * M_PI / 180.;
+
+    // On renvoit la distance entre les deux positions en km (6371 correspond au rayon de la terre en km)
     return(acos(sin(lon1)*sin(lon2)+cos(lon1)*cos(lon2)*cos(lat1-lat2))*6371);
 }
 

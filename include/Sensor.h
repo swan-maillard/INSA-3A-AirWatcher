@@ -31,15 +31,22 @@ class Sensor {
 
     // Constructeur
     Sensor(const string &lat, const string &lon, const int aSensorID, const int aUserID);
-    //TODO Faire un constructeur de copie
 
     // Destructeur
     ~Sensor();
 
+    // Ajoute une mesure au capteur pour un type (O3, SO2, NO2 ou PM10) et à une date
     void addValue(const string &date, const string &val, const string &type);
-    double* valeurAvantEtApres(Date &d, Date &f);
-    Date limiteDate(Date &debRecherche, double* values);
 
+    // Récupère les mesures de O3, SO2, NO2 et PM10 aux dates de début et de fin
+    // Renvoit un tableau de taille 8 avec les 4 premières cases les valeurs de O3, SO2, NO2 et PM10 à la date de début,
+    // et les 4 dernières cases leurs valeurs à la date de fin
+    double* valeurAvantEtApres(Date &d, Date &f);
+
+    // Affiche toutes les informations du capteur, notamment les valeurs de chaque mesures à toutes les dates
+    void affichageComplet() const; 
+
+    // Getters
     Position    getPosition() const { return pos;      }
     int         getSensorID() const { return sensorID; }
     int         getUserID()   const { return userID;   }
@@ -49,8 +56,6 @@ class Sensor {
     DicoMesure  getValPM10()  const { return ValPM10;  }
     bool  getBanned()  const { return isBanned;  }
     void  setBanned(bool state);
-
-    void affichageComplet() const; 
 
     friend std::ostream& operator << (std::ostream& os, const Sensor &S);
 

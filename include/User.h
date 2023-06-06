@@ -28,6 +28,7 @@ class User {
     // Destructeur
     ~User();
 
+    // Vérifie le mot de passe
     int checkPwd(const string & p) const;
 
 //----------------------------------------------------------------- PRIVE

@@ -3,7 +3,6 @@
                              -------------------
     début                : 13/12/2022
     copyright            : (C) 2022 par WARIN Hugo, BIAUD, Alexandre, MAILLARD Swan, GIRAUDON Clément
-    e-mail               : hugo.warin@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <AirCleaner> (fichier AirCleaner.h) ----------------
@@ -24,17 +23,19 @@ class AirCleaner {
   public:
 //----------------------------------------------------- Méthodes publiques
 
-    bool addWorkingHours(const string &start, const string &end);
-    // Constructeur
+    // Constructeurs
     AirCleaner();
-
     AirCleaner(const string &aLatitude, const string &aLongitude, const int providerId, const int cleanerId);
 
     Position getPosition();
 
     int getCleanerId();
 
+    // Renvoie les périodes de fonctionnement de l'AirCleaner <début, fin>
     map<Date, Date> getWorkingHours();
+
+    // Ajoute une période de fonctionnement pour l'AirCleaner
+    bool addWorkingHours(const string &start, const string &end);
 
     // Destructeur
     ~AirCleaner();

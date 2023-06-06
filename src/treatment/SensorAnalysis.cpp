@@ -59,14 +59,18 @@ SensorAnalysis::~SensorAnalysis() {
 void SensorAnalysis::scanSensors(const vector<Sensor*> & sensors) {
   vector<Sensor*>::const_iterator itSensor1;
   SensorStats sensorStats;
+
+  // On parcourt la liste des capteurs
   for (itSensor1 = sensors.begin() ; itSensor1 != sensors.end(); ++itSensor1) {
     Sensor * sensor = *itSensor1;
 
+    // On récupère les mesures du capteur
     sensorStats.O3 = (--sensor->getValO3().end())->second;
     sensorStats.NO2 = (--sensor->getValNO2().end())->second;
     sensorStats.SO2 = (--sensor->getValSO2().end())->second;
     sensorStats.PM10 = (--sensor->getValPM10().end())->second;
 
+    // distanceMapSensors contiendra les capteurs triés en fonction de leur distance avec le capteur actuel
     multimap<double, Sensor*> distanceMapSensors;
     vector<Sensor*>::const_iterator itSensor2;
     for (itSensor2 = sensors.begin() ; itSensor2 != sensors.end(); ++itSensor2) {
@@ -80,6 +84,8 @@ void SensorAnalysis::scanSensors(const vector<Sensor*> & sensors) {
     NearSensorStats nearSensorStats;
     multimap<double, Sensor*>::iterator itMapDistance;
     int i;
+
+    // On calcule la moyenne des mesures des 5 capteurs les plus proches
     for (itMapDistance = distanceMapSensors.begin(), i = 0; itMapDistance != distanceMapSensors.end() && i < 5; ++itMapDistance, ++i) {
       Sensor* nearSensor = itMapDistance->second;
 
@@ -88,6 +94,8 @@ void SensorAnalysis::scanSensors(const vector<Sensor*> & sensors) {
       nearSensorStats.meanNO2 += (--nearSensor->getValNO2().end())->second / 5.;
       nearSensorStats.meanPM10 += (--nearSensor->getValPM10().end())->second / 5.;
     }
+
+    // On calcule la variance des mesures des 5 capteurs les plus proches
     for (itMapDistance = distanceMapSensors.begin(), i = 0; itMapDistance != distanceMapSensors.end() && i < 5; ++itMapDistance, ++i) {
       Sensor* nearSensor = itMapDistance->second;
 
@@ -97,6 +105,8 @@ void SensorAnalysis::scanSensors(const vector<Sensor*> & sensors) {
       nearSensorStats.variancePM10 += pow((--nearSensor->getValPM10().end())->second - nearSensorStats.meanPM10, 2) / 4.;
     }
 
+    // Si les mesures du capteur ne sont pas comprises dans la moyenne +/- la variance des 5 capteurs les plus proches
+    // il est probablement défectueux
     if (abs(nearSensorStats.meanO3 - sensorStats.O3) > nearSensorStats.varianceO3 
       || abs(nearSensorStats.meanSO2 - sensorStats.SO2) > nearSensorStats.varianceSO2
       || abs(nearSensorStats.meanSO2 - sensorStats.NO2) > nearSensorStats.varianceNO2

@@ -58,37 +58,19 @@ void Sensor::addValue(const string &date, const string &val,const string &type)
 double *Sensor::valeurAvantEtApres(Date &d, Date &f)
 {
     double *lesValeurs = new double[8];
+
+    // Les 4 premières valeurs correspondent aux mesures de O3, NO2, SO2 et PM10 les plus proches avant la date d
     lesValeurs[0] = (--(ValO3.lower_bound(d)))->second;
     lesValeurs[1] = (--(ValNO2.lower_bound(d)))->second;
     lesValeurs[2] = (--(ValSO2.lower_bound(d)))->second;
     lesValeurs[3] = (--(ValPM10.lower_bound(d)))->second;
+
+    // Les 4 dernirèes valeurs correspondent aux mesures de O3, NO2, SO2 et PM10 les plus proches avant la date f
     lesValeurs[4] = (--ValO3.lower_bound(f))->second;
     lesValeurs[5] = (--ValNO2.lower_bound(f))->second;
     lesValeurs[6] = (--ValSO2.lower_bound(f))->second;
     lesValeurs[7] = (--ValPM10.lower_bound(f))->second;
     return lesValeurs;
-}
-
-Date Sensor::limiteDate(Date &debRecherche, double *values)
-{
-    DicoMesure::iterator itO3 = ValO3.lower_bound(debRecherche);
-    DicoMesure::iterator itNO2 = ValNO2.lower_bound(debRecherche);
-    DicoMesure::iterator itSO2 = ValSO2.lower_bound(debRecherche);
-    DicoMesure::iterator itPM10 = ValPM10.lower_bound(debRecherche);
-    bool finir = false;
-    while (itO3 != ValO3.end() && finir == false){
-        if (itO3->second > values[0] || itNO2->second > values[1] || itSO2->second > values[2] || itPM10->second > values[3]){
-            finir = true;
-        }
-        else {
-            cout << itO3->first << endl;
-            itO3++;
-            itNO2++;
-            itSO2++;
-            itPM10++;
-        }
-    }
-    return itO3->first;
 }
 
 ostream &operator<<(ostream &os, const Sensor &S)

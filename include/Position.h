@@ -22,18 +22,19 @@ class Position {
   public:
 //----------------------------------------------------- Méthodes publiques
 
-    bool isIn(Position posCentre, double rayon);
+    // Constructeurs
+    Position(double latitude, double longitude);
+    Position(string lat = "0.0", string lon = "0.0");
 
+    // Calcule la distance en km avec une autre position
     double calculateDistance(Position pos);
+
+    // Renvoit true si la position se situe dans un périmètre définit par un centre et un rayon
+    bool isIn(Position posCentre, double rayon);
 
     double getLongitude();
 
     double getLatitude();
-
-    // Constructeurs
-    Position(double latitude, double longitude);
-
-    Position(string lat = "0.0", string lon = "0.0");
 
     friend std::ostream& operator << (std::ostream& os, const Position & unePos);
 

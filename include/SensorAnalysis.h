@@ -31,6 +31,7 @@ class SensorAnalysis {
     // Destructeur
     ~SensorAnalysis();
 
+    // Analyse les capteurs et affiche ceux potentiellement défectueux
     void scanSensors(const vector<Sensor*> & sensors);
 
 //----------------------------------------------------------------- PRIVE

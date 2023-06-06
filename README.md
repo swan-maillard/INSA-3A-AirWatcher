@@ -16,6 +16,8 @@ Certaines fonctionnalités nécessitent d'avoir un compte gouvernement.
 
 **$ `make`** pour compiler et faire l'édition des liens.
 
+**$ `make run`** pour compiler, faire l'édition des liens et éxecuter `./app`.
+
 **$ `make debug`** pour compiler en mode développement et faire l'édition des liens.
 
 **$ `make fclean`** pour supprimer les fichiers objets et l'éxecutable.
@@ -36,4 +38,8 @@ L'application est lancé en tapant la commande **./app** depuis la racine du dos
 
 ## 4. Tests
 ---
-...
+Les tests doivent être régulièrement exécutés afin de vérifier que les nouvelles fonctionnalités n'ont pas introduit d'erreur dans les anciennes.
+
+**Exécution des tests :**
+- Se placer dans le répertoire **`tests/`**
+- Exécuter **$ `./mktest.sh`**

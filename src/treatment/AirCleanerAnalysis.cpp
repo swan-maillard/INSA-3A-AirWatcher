@@ -36,10 +36,14 @@ AirCleanerAnalysis::~AirCleanerAnalysis()
 
 void AirCleanerAnalysis::checkEfficiency(AirCleaner &airCleaner, const vector<Sensor *> &sensors) const
 {
+
+  // distanceMapSensors contiendra les capteurs triés en fonction de leur distance avec notre airCleaner
   multimap<double, Sensor*> distanceMapSensors;
   vector<Sensor*>::const_iterator itSensor;
   for (itSensor = sensors.begin() ; itSensor != sensors.end(); ++itSensor) {
     Sensor *sensor = *itSensor;
+
+    // Si le capteur est dysfonctionnel, on ne le prend pas en compte dans le calcul
     if(!sensor->getBanned())
     {
       double distance = airCleaner.getPosition().calculateDistance(sensor->getPosition());
@@ -47,28 +51,43 @@ void AirCleanerAnalysis::checkEfficiency(AirCleaner &airCleaner, const vector<Se
     }
 
   }
+
+  // On récupère les dates de début et de fin de fonctionnement de l'airCleaner
   Date debut = airCleaner.getWorkingHours().begin()->first;
   Date fin = airCleaner.getWorkingHours().begin()->second;
+
+  // Contiendra le pourcentage d'efficacité pour O3, NO2, SO2 et PM10
   double efficacite[4];
   bool finir = false;
 
+  // On récupère le capteur le plus proche de l'airCleaner
   multimap<double, Sensor*>::iterator it = distanceMapSensors.begin();
+
+  // Pour ce capteur, on récupère les valeurs d'O3, NO2, SO2 et PM10 au début et à la fin de la période de fonctionnement de l'AirCleaner
+  // val = [O3deb, NO2deb, SO2deb, PM10deb, O3fin, NO2fin, SO2fin, PM10fin]
   double *val;
   val = it->second->valeurAvantEtApres(debut, fin);
-  for (int i = 0 ; i < 4 ; i++){
+
+  // Pour les 4 catégories, on calcule son pourcentage d'efficacité
+  for (int i = 0 ; i < 4 ; i++)
     efficacite[i] = (val[i] - val[4+i]) / (double)val[i];
-  }
+
+
   delete[] val;
+
+  // Si l'airCleaner a été efficace à hauteur de 2,5%, ce n'est pas bon
   if (efficacite[0] < 0.25 && efficacite[1] < 0.25 && efficacite[2] < 0.25 && efficacite[3] < 0.25){
     cout << endl << "Ce air Cleaner n'a eu aucun effet sur l'air environnant, il faudrait le réviser ou le déplacer !\n";
     return;
   }
 
+  // On affiche les pourcentages d'efficacité
   cout << endl << "L'efficacite de l'air Cleaner pour NO2 est de : " << (int)(100*efficacite[0]) << "%" << endl;
   cout << "L'efficacite de l'air Cleaner pour O3 est de : " << (int)(100*efficacite[1]) << "%" << endl;
   cout << "L'efficacite de l'air Cleaner pour SO2 est de : " << (int)(100*efficacite[2])  << "%" << endl;
   cout << "L'efficacite de l'air Cleaner pour PM10 est de : " << (int)(100*efficacite[3]) << "%" << endl;
 
+  // On parcourt tous les capteurs par ordre de distance croissante jusqu'à ce que l'efficacité soit inférieur à 2.5%
   it++;
   while (it != distanceMapSensors.end() && finir == false) {
     val = it->second->valeurAvantEtApres(debut, fin);
@@ -83,6 +102,8 @@ void AirCleanerAnalysis::checkEfficiency(AirCleaner &airCleaner, const vector<Se
   }
   --it;
 
+
+  // On obtient donc une approximation du rayon de fonctionnement de l'aircleaner
   double rayon = airCleaner.getPosition().calculateDistance(it->second->getPosition());
   cout << endl << "Le rayon de fonctionnement est de " << rayon << " km" << endl;
 }

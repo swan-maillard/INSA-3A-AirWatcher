@@ -32,6 +32,7 @@ class AirCleanerAnalysis {
     // Destructeur
     ~AirCleanerAnalysis();
 
+    // Analyse l'efficace d'un AirCleaner
     void checkEfficiency(AirCleaner & cleanerId, const vector<Sensor*> & sensors) const;
 
 //----------------------------------------------------------------- PRIVE
