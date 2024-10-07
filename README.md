@@ -40,11 +40,6 @@ L'application dispose d'une interface console où les utilisateurs peuvent se co
 **$ `make help`** pour obtenir plus d'informations sur les commandes disponibles.
 
 ## Exécution
-Voici une version améliorée de la section concernant l'exécution de l'application :
-
----
-
-### Exécution
 
 Pour lancer l'application, utilisez la commande suivante depuis la racine du projet :
 
