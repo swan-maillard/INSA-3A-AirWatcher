@@ -2,76 +2,80 @@
 
 ## Description
 
-Cette application développée en C++ permet de traiter des données de capteurs de qualité de l'air pour fournir des statistiques sur des zones géographiques, détecter des capteurs défectueux, et bien plus encore.
+This application developed in C++ processes air quality sensor data to provide statistics on geographical areas, detect faulty sensors, and much more.
 
-Nous avons suivi une méthode de Test-Driven Development tout au long de la réalisation de ce projet.
+We followed a Test-Driven Development methodology throughout the implementation of this project.
 
-## Fonctionnalités
-Voici une liste des fonctionnalités principales de l'application :
+## Features
 
-1. **Identification des capteurs défectueux** : Analyse des capteurs pour détecter les anomalies basées sur la moyenne et l'écart-type des données des capteurs environnants. Accessible uniquement au gouvernement.
-   
-2. **Génération de statistiques** : Calcul de la qualité de l'air et de divers indices ATMO pour des capteurs dans une zone circulaire ou à un point précis.
-   
-3. **Analyse de la qualité de l'air d'un point particulier** : Triangulation des données des capteurs les plus proches pour déterminer la qualité de l'air.
-   
-4. **Recherche de capteurs similaires** : Identification des capteurs avec des caractéristiques de qualité d'air similaires dans une plage de temps donnée, accessible uniquement au gouvernement.
-   
-5. **Vérification de la fiabilité des capteurs** : Validation des données des capteurs privés en les comparant à ceux des capteurs voisins.
-   
-6. **Évaluation de l'efficacité des purificateurs d'air** : Comparaison des données avant et après l'installation de purificateurs d'air.
+Here is a list of the main features of the application:
 
+1. **Identification of Faulty Sensors**: Analyzes sensors to detect anomalies based on the mean and standard deviation of the data from surrounding sensors. Accessible only to the government.
+   
+2. **Statistical Generation**: Calculates air quality and various ATMO indices for sensors in a circular area or at a specific point.
+   
+3. **Analysis of Air Quality at a Specific Point**: Triangulates data from the nearest sensors to determine air quality.
+   
+4. **Search for Similar Sensors**: Identifies sensors with similar air quality characteristics within a given timeframe, accessible only to the government.
+   
+5. **Verification of Sensor Reliability**: Validates private sensor data by comparing it to that of neighboring sensors.
+   
+6. **Evaluation of Air Purifier Effectiveness**: Compares data before and after the installation of air purifiers.
 
-## Interface Utilisateur
-L'application dispose d'une interface console où les utilisateurs peuvent se connecter et accéder aux différentes fonctionnalités par le biais de menus interactifs.
+## User Interface
+
+The application features a console interface where users can log in and access various functionalities through interactive menus.
 
 ## Compilation
+
 ---
-**Commandes à exécuter avec MakeFile :**
+**Commands to be executed with MakeFile:**
 
-**$ `make`** pour compiler et faire l'édition des liens.
+**$ `make`** to compile and link.
 
-**$ `make run`** pour compiler, faire l'édition des liens et éxecuter `./app`.
+**$ `make run`** to compile, link, and execute `./app`.
 
-**$ `make debug`** pour compiler en mode développement et faire l'édition des liens.
+**$ `make debug`** to compile in development mode and link.
 
-**$ `make fclean`** pour supprimer les fichiers objets et l'éxecutable.
+**$ `make fclean`** to remove object files and the executable.
 
-**$ `make help`** pour obtenir plus d'informations sur les commandes disponibles.
+**$ `make help`** to get more information about available commands.
 
-## Exécution
+## Execution
 
-Pour lancer l'application, utilisez la commande suivante depuis la racine du projet :
+To launch the application, use the following command from the root of the project:
 
 ```bash
 ./app
 ```
 
-L'application prend en charge les options suivantes :
+The application supports the following options:
 
-- **`-t`** : Active le mode de traçage pour afficher le temps d'exécution des différentes fonctions. Cela peut être utile pour le débogage et l'optimisation des performances.
+- **`-t`**: Enables tracing mode to display the execution time of different functions. This can be useful for debugging and performance optimization.
 
-### Test
-Les tests doivent être régulièrement exécutés afin de vérifier que les nouvelles fonctionnalités n'ont pas introduit d'erreur dans les anciennes.
+### Testing
 
-**Exécution des tests :**
-- Se placer dans le répertoire **`tests/`**
-- Exécuter **$ `./mktest.sh`**
+Tests should be run regularly to ensure that new features do not introduce errors into existing functionality.
 
-### Structure du Projet
-- **data/** : Contient des fichiers .csv de données sur les capteurs, etc.
-- **inclue/** : Contient les fichiers d'en-tête C++.
-- **src/** : Contient les fichiers source C++.
-- **tests/** : Contient le script de test.
-- **Makefile** : Fichier de configuration pour la compilation et l'exécution de l'application.
+**Running the tests:**
+- Navigate to the **`tests/`** directory.
+- Execute **$ `./mktest.sh`**.
 
-## Auteurs
+### Project Structure
+
+- **data/**: Contains .csv files of sensor data, etc.
+- **include/**: Contains C++ header files.
+- **src/**: Contains C++ source files.
+- **tests/**: Contains the test script.
+- **Makefile**: Configuration file for compiling and running the application.
+
+## Authors
 
 - Alexandre Biaud (alexandre.biaud@insa-lyon.fr)
 - Clément Giraudon (clement.giraudon@insa-lyon.fr)
 - Swan Maillard (maillard.swan@gmail.com)
 - Hugo Warin (hugo.warin@insa-lyon.fr)
 
-## Licence
+## License
 
-Ce projet est sous licence MIT. Veuillez consulter le fichier `LICENSE` pour plus d'informations.
+This project is licensed under the MIT License. Please refer to the `LICENSE` file for more information.
